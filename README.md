@@ -1,3 +1,5 @@
+## Setting up the environment
+
 1. Create a working directory
 1. Install vitualenv:
 
@@ -11,8 +13,7 @@
 
 	`$ . activate`
 
-1. When active, install:
-
+1. When active, install these modules:
     - Flask (http://flask.pocoo.org/)
     	`$ pip install Flask`
     - WTForms (https://flask-wtf.readthedocs.io/en/stable/)
