@@ -43,5 +43,10 @@ def logout():
     return redirect(url_for("index"))
 
 
+@app.route("/show_schedule")
+def show_schedule():
+    return render_template("show_schedule.html", title="Agenda")
+
+
 if __name__ == '__main__':
     app.run(debug=True)
