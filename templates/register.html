@@ -1,0 +1,429 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1 class="page-header">Cadastar colaborador</h1>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Cadastro</h3>
+    </div>
+    <div class="panel-body">
+<!--  SOMENTE QUANDO CONFIRMADO -->
+                <div class="alert alert-success text-center">
+                    <strong>Sucesso!</strong> O cadastro foi realizado. <br>
+                </div>
+
+
+        <form method="post" action="" id="registerSpecialist" name="registerSpecialist">
+            <p class="text-right">
+                <small>(*) Informações obrigatórias.</small>
+            </p>
+
+            <fieldset>
+                <legend><h4>Informações pessoais</h4></legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group"><label for="emailPessoal">* E-mail pessoal</label>
+                            <input type="email" class="form-control" name="username" id="password"
+                                   placeholder="exemplo@exmp.com (será seu usuário)" required=""></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group"><label for="senha">* Senha</label>
+                            <input type="email" class="form-control" name="emailPessoal" id="emailPessoal"
+                                   placeholder="exemplo@exmp.com" required="required">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group"><label for="telefoneFixo">CRM</label>
+                            <input type="number" class="form-control" name="telefoneFixo" id="telefoneFixo"
+                                   placeholder="(somente números)"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nomeCompleto">* Nome completo</label>
+                            <input type="text" class="form-control" name="nomeCompleto" id="nomeCompleto" required=""
+                                   pattern="[A-Za-z\s ]+$">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group"><label for="dataNascimento">Data de nascimento</label>
+                            <input type="date" class="form-control" name="dataNascimento" id="dataNascimento">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group"><label for="escolaridade">Naturalidade</label>
+                            <input type="text" class="form-control" name="naturalidade" id="naturalidade">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="estado">Estado</label>
+                            <select class="form-control" name="estados">
+                                <option value="AC">Acre</option>
+                                <option value="AL">Alagoas</option>
+                                <option value="AP">Amapá</option>
+                                <option value="AM">Amazonas</option>
+                                <option value="BA">Bahia</option>
+                                <option value="CE">Ceará</option>
+                                <option value="DF">Distrito Federal</option>
+                                <option value="ES">Espírito Santo</option>
+                                <option value="GO">Goiás</option>
+                                <option value="MA">Maranhão</option>
+                                <option value="MT">Mato Grosso</option>
+                                <option value="MS">Mato Grosso do Sul</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="PA">Pará</option>
+                                <option value="PB">Paraíba</option>
+                                <option value="PR">Paraná</option>
+                                <option value="PE">Pernambuco</option>
+                                <option value="PI">Piauí</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="RN">Rio Grande do Norte</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                                <option value="RO">Rondônia</option>
+                                <option value="RR">Roraima</option>
+                                <option value="SC">Santa Catarina</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="SE">Sergipe</option>
+                                <option value="TO">Tocantins</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="form-group"><label for="rg">RG</label>
+                            <input type="text" class="form-control" name="rg" id="rg" ></div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="form-group"><label for="cpf">* CPF</label>
+                            <input type="number" class="form-control" name="cpf" id="cpf"
+                                   required="" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
+                                   title="Digite um CPF válido" placeholder="(somente números)">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group"><label for="cep">CEP residencial</label>
+                            <input type="number" class="form-control" name="cep" id="cep" placeholder="(somente números)"
+                                   pattern="\d{5}-?\d{3}">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group"><label for="logradouro">Logradouro</label>
+                            <select class="form-control" id="logradouro" name="logradouro">
+                                <option selected="selected">Tipo</option>
+                                <option value="Aeroporto">Aeroporto</option>
+                                <option value="Alameda">Alameda</option>
+                                <option value="Área">Área</option>
+                                <option value="Avenida">Avenida</option>
+                                <option value="Campo">Campo</option>
+                                <option value="Chácara">Chácara</option>
+                                <option value="Colônia">Colônia</option>
+                                <option value="Condomínio">Condomínio</option>
+                                <option value="Conjunto">Conjunto</option>
+                                <option value="Distrito">Distrito</option>
+                                <option value="Esplanada">Esplanada</option>
+                                <option value="Estação">Estação</option>
+                                <option value="Estrada">Estrada</option>
+                                <option value="Favela">Favela</option>
+                                <option value="Fazenda">Fazenda</option>
+                                <option value="Feira">Feira</option>
+                                <option value="Jardim">Jardim</option>
+                                <option value="Ladeira">Ladeira</option>
+                                <option value="Lago">Lago</option>
+                                <option value="Lagoa">Lagoa</option>
+                                <option value="Largo">Largo</option>
+                                <option value="Loteamento">Loteamento</option>
+                                <option value="Morro">Morro</option>
+                                <option value="Núcleo">Núcleo</option>
+                                <option value="Parque">Parque</option>
+                                <option value="Passarela">Passarela</option>
+                                <option value="Pátio">Pátio</option>
+                                <option value="Praça">Praça</option>
+                                <option value="Quadra">Quadra</option>
+                                <option value="Recanto">Recanto</option>
+                                <option value="Residência">Residência</option>
+                                <option value="Rodovia">Rodovia</option>
+                                <option value="Rua">Rua</option>
+                                <option value="Setor">Setor</option>
+                                <option value="Sítio">Sítio</option>
+                                <option value="Travessa">Travessa</option>
+                                <option value="Trecho">Trecho</option>
+                                <option value="Trevo">Trevo</option>
+                                <option value="Vale">Vale</option>
+                                <option value="Vereda">Vereda</option>
+                                <option value="Via">Via</option>
+                                <option value="Viadulto">Viadulto</option>
+                                <option value="Viela">Viela</option>
+                                <option value="Vila">Vila</option>
+                            </select></div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group"><label for="endereco">Endereço residencial</label>
+                            <input type="text" class="form-control" name="endereco" id="endereco"
+                                   placeholder="Ex.: Av. das Américas, 137"></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group"><label for="bairro">Bairro</label>
+                            <input type="text" class="form-control" name="bairro" id="bairro"></div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group"><label for="cidade">Cidade</label>
+                            <input type="text" class="form-control" name="cidade" id="cidade"></div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group"><label for="estado">Estado</label>
+                            <select class="form-control" id="logradouro" name="logradouro">
+                                <option selected="selected">Selecione o Estado</option>
+                                <option value="AC">Acre</option>
+                                <option value="AL">Alagoas</option>
+                                <option value="AM">Amazonas</option>
+                                <option value="AP">Amapá</option>
+                                <option value="BA">Bahia</option>
+                                <option value="CE">Ceará</option>
+                                <option value="DF">Distrito Federal</option>
+                                <option value="ES">Espírito Santo</option>
+                                <option value="GO">Goiás</option>
+                                <option value="MA">Maranhão</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="MS">Mato Grosso do Sul</option>
+                                <option value="MT">Mato Grosso</option>
+                                <option value="PA">Pará</option>
+                                <option value="PB">Paraíba</option>
+                                <option value="PE">Pernambuco</option>
+                                <option value="PI">Piauí</option>
+                                <option value="PR">Paraná</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="RN">Rio Grande do Norte</option>
+                                <option value="RD">Rondônia</option>
+                                <option value="RR">Roraima</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                                <option value="SC">Santa Catarina</option>
+                                <option value="SE">Sergipe</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="TO">Tocantins</option>
+                            </select></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group"><label for="telefoneCelular">Telefone celular pessoal</label>
+                            <input type="number" class="form-control" name="telefoneCelular" id="telefoneCelular"
+                                   maxlength="15" placeholder="(somente números)">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group"><label for="telefoneFixo">Telefone fixo pessoal</label>
+                            <input type="number" class="form-control" name="telefoneFixo" id="telefoneFixo"
+                                   placeholder="(somente números)"></div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="especialidade">Especialidade</label>
+                        <select class="form-control" id="selectSpecialy" name="especialidade">
+                            <option value="0">Selecione uma especialidade...</option>
+
+                        </select>
+                    </div>
+                </div>
+
+            </fieldset>
+            <!--FIM INFO PESSOAIS-->
+            <br>
+
+            <fieldset>
+                <legend><h4>Informações da clínica</h4></legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group"><label for="razaoSocial">Razão social</label>
+                            <input type="text" class="form-control" name="razaoSocial" id="razaoSocial"></div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group"><label for="nomeFantasia">Nome fantasia</label>
+                            <input type="text" class="form-control" name="nomeFantasia" id="nomeFantasia"
+                                   placeholder="nome fantasia..."></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group"><label for="cep">CEP</label>
+                            <input type="number" class="form-control" name="cep" id="cep" placeholder="(somente números)"
+                                   pattern="[0-9]{5}[\-]?[0-9]{3}">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group"><label for="logradouro">Logradouro</label>
+                            <select class="form-control" id="logradouro" name="logradouro">
+                                <option selected="selected">Tipo</option>
+                                <option value="Aeroporto">Aeroporto</option>
+                                <option value="Alameda">Alameda</option>
+                                <option value="Área">Área</option>
+                                <option value="Avenida">Avenida</option>
+                                <option value="Campo">Campo</option>
+                                <option value="Chácara">Chácara</option>
+                                <option value="Colônia">Colônia</option>
+                                <option value="Condomínio">Condomínio</option>
+                                <option value="Conjunto">Conjunto</option>
+                                <option value="Distrito">Distrito</option>
+                                <option value="Esplanada">Esplanada</option>
+                                <option value="Estação">Estação</option>
+                                <option value="Estrada">Estrada</option>
+                                <option value="Favela">Favela</option>
+                                <option value="Fazenda">Fazenda</option>
+                                <option value="Feira">Feira</option>
+                                <option value="Jardim">Jardim</option>
+                                <option value="Ladeira">Ladeira</option>
+                                <option value="Lago">Lago</option>
+                                <option value="Lagoa">Lagoa</option>
+                                <option value="Largo">Largo</option>
+                                <option value="Loteamento">Loteamento</option>
+                                <option value="Morro">Morro</option>
+                                <option value="Núcleo">Núcleo</option>
+                                <option value="Parque">Parque</option>
+                                <option value="Passarela">Passarela</option>
+                                <option value="Pátio">Pátio</option>
+                                <option value="Praça">Praça</option>
+                                <option value="Quadra">Quadra</option>
+                                <option value="Recanto">Recanto</option>
+                                <option value="Residência">Residência</option>
+                                <option value="Rodovia">Rodovia</option>
+                                <option value="Rua">Rua</option>
+                                <option value="Setor">Setor</option>
+                                <option value="Sítio">Sítio</option>
+                                <option value="Travessa">Travessa</option>
+                                <option value="Trecho">Trecho</option>
+                                <option value="Trevo">Trevo</option>
+                                <option value="Vale">Vale</option>
+                                <option value="Vereda">Vereda</option>
+                                <option value="Via">Via</option>
+                                <option value="Viadulto">Viadulto</option>
+                                <option value="Viela">Viela</option>
+                                <option value="Vila">Vila</option>
+                            </select></div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group"><label for="endereco">Endereço</label>
+                            <input type="text" class="form-control" name="endereco" id="endereco"
+                                   placeholder="endereco da empresa..."></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group"><label for="bairro">Bairro</label>
+                            <input type="text" class="form-control" name="bairro" id="bairro">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group"><label for="cidade">Cidade</label>
+                            <input type="text" class="form-control" name="cidade" id="cidade">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group"><label for="estado">Estado</label>
+                            <select class="form-control" id="logradouro" name="logradouro">
+                                <option selected="selected">Selecione o Estado</option>
+                                <option value="AC">Acre</option>
+                                <option value="AL">Alagoas</option>
+                                <option value="AM">Amazonas</option>
+                                <option value="AP">Amapá</option>
+                                <option value="BA">Bahia</option>
+                                <option value="CE">Ceará</option>
+                                <option value="DF">Distrito Federal</option>
+                                <option value="ES">Espírito Santo</option>
+                                <option value="GO">Goiás</option>
+                                <option value="MA">Maranhão</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="MS">Mato Grosso do Sul</option>
+                                <option value="MT">Mato Grosso</option>
+                                <option value="PA">Pará</option>
+                                <option value="PB">Paraíba</option>
+                                <option value="PE">Pernambuco</option>
+                                <option value="PI">Piauí</option>
+                                <option value="PR">Paraná</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="RN">Rio Grande do Norte</option>
+                                <option value="RD">Rondônia</option>
+                                <option value="RR">Roraima</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                                <option value="SC">Santa Catarina</option>
+                                <option value="SE">Sergipe</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="TO">Tocantins</option>
+                            </select></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group"><label for="telefonefixoEmp1">Telefone 1</label>
+                            <input type="number" class="form-control" name="telefoneComercial1"
+                                   id="telefoneComercial1" maxlength="15"
+                                   pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$" placeholder="(somente números)"></div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group"><label for="telefoneFixoEmp2">Telefone 2</label>
+                            <input type="number" class="form-control" name="telefoneComercial2"
+                                   id="telefoneComercial2" maxlength="15"
+                                   pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$" placeholder="(somente números)"></div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group"><label for="emailComercial">E-mail comercial</label>
+                            <input type="email" class="form-control" name="emailComercial" id="emailComercial"
+                                   placeholder="exemplo@exmp.com"></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group"><label for="cnpj">CNPJ</label>
+                            <input type="number" class="form-control" name="cnpj" id="cnpj" placeholder="(somente números)">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="inscricaoEstadual">Inscrição estadual</label>
+                            <input type="text" class="form-control" name="inscricaoEstadual"
+                                   id="inscricaoEstadual">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <br><br>
+            <div class="form-group">
+                <div class="form-group">
+                    <input type="submit" id="cadastrarColaborador" name="cadastrarColaborador"
+                           class="btn btn-primary btn-group-justified" value="Cadastrar colaborador">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

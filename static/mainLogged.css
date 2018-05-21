@@ -1,0 +1,10 @@
+.form-group.required .control-label:after {
+    content:"*";
+    color:red;
+}
+
+.thumbnail p, .thumbnail h4 {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
