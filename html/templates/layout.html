@@ -11,9 +11,9 @@
 
 
     {% if title %}
-    <title>{{ title }}</title>
+        <title>{{ title }}</title>
     {% else %}
-    <title>TeleEspecialita<title>
+        <title>TeleEspecialita<title>
     {% endif %}
 
     <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet" type="text/css">
@@ -53,31 +53,25 @@
                 <ul class="nav nav-sidebar">
                     <li><a href="{{ url_for("home") }}"> <i class="fa fa-home" style="color:blue"></i>
                         Início<span class="sr-only">(current)</span></a></li>
-                        <li><a href="{{ url_for("search_specialists") }}"><i class="fa fa-search" style="color:blue"></i>
-                            Buscar especialista</a></li>
-                            <li><a href="showSchedule.php"><i class="fa fa-calendar" style="color:blue"></i>
-                                Consultar agenda</a></li>
-                                <li><a href="{{ url_for("check_requests") }}"><i class="fa fa-clock" style="color:blue"></i>
-                                    Minhas solicitações</a></li>
-                                    <li><a href="{{ url_for("register") }}"><i class="fa fa-user-plus" style="color:blue"></i>
-                                        Cadastrar colaborador</a></li>
-
-                                    </ul>
-                                </div>
-                                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                                    {% block content %}
-                                    {% endblock content %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <li><a href="{{ url_for("search_specialists") }}"><i class="fa fa-search" style="color:blue"></i>
+                        Buscar especialista</a></li>
+                    <li><a href="{{ url_for("show_schedule") }}"><i class="fa fa-calendar" style="color:blue"></i>
+                        Consultar agenda</a></li>
+                    <li><a href="{{ url_for("check_requests") }}"><i class="fa fa-clock" style="color:blue"></i>
+                        Minhas solicitações</a></li>
+                    <li><a href="{{ url_for("register") }}"><i class="fa fa-user-plus" style="color:blue"></i>
+                        Cadastrar colaborador</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                {% block content %}
+                {% endblock content %}
             </div>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/holder.min.js"></script>
+    <script>window.jQuery || document.write('<script src="https://getbootstrap.com/docs/3.3/dist/js/jquery.min.js"><\/script>')</script>
+    <script src="https://getbootstrap.com/docs/3.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://getbootstrap.com/docs/3.3/dist/js/holder.min.js"></script>
 </body>
 </html>
