@@ -1,30 +1,44 @@
-## Setting up the environment
+# TeleEspecialista - Sistema de agendamento e teleconsulta
+Documentação do projeto de Telemedicina.
+http://tele-especialista.sytes.net/
 
-1. Create a working directory
-1. Install vitualenv:
+## Proposta do Sistema
+**Sistema Atual**
+![](docs/proposta/sistema_atual.png)
+**Nossa Proposta**
+![](docs/proposta/sistema_proposto.png)
 
-    `$ pip install virtualenv`
+## Diagramas UML
+**Use-Cases**
+![](docs/uml-diagrams/use_cases.png)
+**Mapa do Site**
+![](docs/uml-diagrams/mapa_do_site.png)
+**Mapa do Site - Perfil do Hospital das Clínicas**
+![](docs/uml-diagrams/mapa_do_site_perfil_hc.png)
+**Mapa do Site - Perfil do Posto Médico**
+![](docs/uml-diagrams/mapa_do_site_perfil_pm.png)
 
-1. Create a new virtualenv
+## Wireframe
+**Index**
+![](docs/wireframe-diagrams/index.png)
 
-    `$ virtualenv ven`
+## Referências
+* Diagramas UML:
+    * Lucid Chart <https://www.lucidchart.com/pages/examples/uml_diagram_tool>
+    * Plant UML<http://plantuml.com/>
+    * DevMedica <https://www.devmedia.com.br/o-que-e-uml-e-diagramas-de-caso-de-uso-introducao-pratica-a-uml/23408>
+* Wireframe:
+    * Wikipedia <https://pt.wikipedia.org/wiki/Website_wireframe>
+    * Minimal Wireframe Tool<https://wireframe.cc/>
+* Desenvolvimento de uma tela (HTML, CSS, JavaScript):
+    * W3 Schools <https://www.w3schools.com/>
+    * Banco de dados  Firebase <https://youtu.be/-OKrloDzGpU>  
+    * Bootstrap <https://startbootstrap.com/template-categories/all/>
 
-1. Activate the virtual environment
+## Autores
 
-	`$ . activate`
-
-1. When active, install these modules:
-    - Flask (http://flask.pocoo.org/)
-    	`$ pip install Flask`
-    - WTForms (https://flask-wtf.readthedocs.io/en/stable/)
-    	`$ pip install flask-wtf`
-    - SQLAlchemy (https://docs.sqlalchemy.org/en/latest/)
-    	`$ pip install flask-sqlalchemy`
-    - Secrets (https://docs.python.org/3/library/secrets.html)
-    	`$ pip install secrets`
-    - Flask-login (https://flask-login.readthedocs.io/en/latest/)
-    	`$ pip install flask-login`
-    - Bcrypt (https://pypi.org/project/bcrypt/)
-    	`$ pip install bcrypt`
-
-1. Start coding!
+* Ítalo G. S. Fernandes
+* Lucas L. Franco
+* Mariane M. Oliveira
+* Nathalia Rodrigues
+* Paulo Camargos
