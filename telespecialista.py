@@ -1,6 +1,10 @@
 from flask import Flask, render_template, redirect, url_for
-app = Flask(__name__)
+from formsPaulo import DoctorRegistrationForm, LoginForm
 
+
+app = Flask(__name__)
+# OVERIDE THIS KEY TO USE ON YOUR SERVER
+app.config['SECRET_KEY'] = '846d33d018c947de7832c0993498b2a1'
 
 @app.route("/testing")
 def testing():
@@ -25,7 +29,6 @@ def account():
 
 @app.route("/search_specialists")
 def search_specialists():
-<<<<<<< HEAD
     specialties  = ["Acupuntura",
     "Alergia e Imunologia",
     "Anestesiologia",
@@ -82,7 +85,6 @@ def search_specialists():
     "Urologia"]
 
     return render_template("search_specialist.html", title="Buscar", specialties=specialties, image_file="static/profilePics/default.jpeg")
-=======
 
 @app.route("/check_requests")
 def check_requests():
@@ -91,8 +93,15 @@ def check_requests():
 
 @app.route("/register")
 def register():
-    return render_template("register.html", title="Cadastrar colaborador")
+    form = DoctorRegistrationForm();
+    # PRECISA ALTERAR O register.html PRA RECEBER O form. DELETE ISTO QUANDO ALTERAR
+    return render_template("register.html", title="Cadastrar colaborador", form=form)
 
+@app.rout("/login")
+def login():
+    form = LoginForm()
+    # PRECISA ALTERAR O login.html PRA RECEBER O form. DELETE ISTO QUANDO ALTERAR
+    return render_template("login.html", title="Entar", form=form)
 
 @app.route("/logout")
 def logout():
