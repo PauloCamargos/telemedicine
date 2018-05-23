@@ -1,5 +1,8 @@
+# -*- coding: utf-8 -*-
+
+
 from flask import Flask, render_template, redirect, url_for
-from formsPaulo import DoctorRegistrationForm, LoginForm
+from forms import DoctorRegistrationForm, LoginForm
 
 
 app = Flask(__name__)
@@ -107,6 +110,9 @@ def login():
 def logout():
     return redirect(url_for("index"))
 
+@app.route("/show_schedule")
+def show_schedule():
+    return render_template("show_schedule.html")
 
 if __name__ == '__main__':
     app.run(debug=True)

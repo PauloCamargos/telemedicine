@@ -1,5 +1,7 @@
+# -*- coding: utf-8 -*-
+
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField, DateField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 # Documentation http://wtforms.simplecodes.com/docs/0.6.1/fields.html
 specialties  = ["Acupuntura",
@@ -69,7 +71,7 @@ class DoctorRegistrationForm(FlaskForm):
     birthdate = DateField('Data de nascimento', validators=[DataRequired()])
     birthcity = StringField('Cidade de nascimento')
     birthstate = StringField('Estado de nascimento')
-    rg = StringField('RG', validators=[DataRequired())
+    rg = StringField('RG', validators=[DataRequired()])
     cpf = StringField('CPF', validators=[DataRequired(), Length(min=10, max=12)])
     cep = IntegerField('CEP')
     place = SelectField('Logradouro', choices=specialties)
