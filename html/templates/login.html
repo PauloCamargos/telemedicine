@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>TeleEspecialita</title>
+    {% endif %}
+
+    <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+
+</head>
+<style>
+body{
+    background-color: #F8F8F8;
+    width: 100% !important;
+}
+</style>
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="panel panel-default large ">
+                <div class="panel-heading text-center">
+                    <h3>Entrar</h3>
+                </div>
+                <div class="panel-body">
+                    <form method="post" action="">
+                        {{ form.hidden_tag() }}
+                        <div class="form-group">
+                            {{ form.email.label(class="form-control-label") }}
+                            {{ form.email(class="form-control") }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.password.label(class="form-control-label") }}
+                            {{ form.password(class="form-control") }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form.remember_me.label(class="checkbox") }}
+                            {{ form.remember_me(class="checkbox") }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form.submit(class="btn btn-info btn-block") }}
+                        </div>
+                    </form>
+                    <div class="form-group">
+                    <small ><a href="">Esqueci a senha</a></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="https://getbootstrap.com/docs/3.3/dist/js/jquery.min.js"><\/script>')</script>
+    <script src="https://getbootstrap.com/docs/3.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://getbootstrap.com/docs/3.3/dist/js/holder.min.js"></script>
+</body>
+</html>

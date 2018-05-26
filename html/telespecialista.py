@@ -99,10 +99,9 @@ def register():
     # PRECISA ALTERAR O register.html PRA RECEBER O form. DELETE ISTO QUANDO ALTERAR
     return render_template("register.html", title="Cadastrar colaborador", form=form)
 
-@app.route("/login")
+@app.route("/login", methods=["POST"])
 def login():
     form = LoginForm()
-    # PRECISA ALTERAR O login.html PRA RECEBER O form. DELETE ISTO QUANDO ALTERAR
     return render_template("login.html", title="Entar", form=form)
 
 @app.route("/logout")
@@ -115,4 +114,4 @@ def show_schedule():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
