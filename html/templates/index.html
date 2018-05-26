@@ -1,19 +1,17 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
 
     <title>TeleEspecialista</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/cover.css" rel="stylesheet">
-    <link href="css/index-style-sheet.css" rel="stylesheet">
+    <link href="{{   url_for('static', filename='bootstrap.min.css')  }}" rel="stylesheet">
+    <link href="{{   url_for('static', filename='cover.css')  }}" rel="stylesheet">
+    <link href="{{   url_for('static', filename='index-style-sheet.css')  }}" rel="stylesheet">
 </head>
 
 <body>
@@ -29,8 +27,8 @@
                     <h3 class="masthead-brand">TeleEspecialista</h3>
                     <nav>
                         <ul class="nav masthead-nav">
-                            <li class="active"><a href="#">Início</a></li>
-                            <li><a href="login.php">Login</a></li>
+                            <li class="active"><a href="{{ url_for('index') }}">Início</a></li>
+                            <li><a href="{{ url_for('login') }}">Login</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -59,8 +57,8 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
-<script src="js/bootstrap.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+<!-- <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script> -->
+<!-- <script src="js/bootstrap.min.js"></script> -->
 </body>
 </html>

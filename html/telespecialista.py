@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, flash
 from forms import DoctorRegistrationForm, LoginForm
 
 
@@ -8,20 +8,20 @@ app = Flask(__name__)
 # OVERIDE THIS KEY TO USE ON YOUR SERVER
 app.config['SECRET_KEY'] = '846d33d018c947de7832c0993498b2a1'
 
+
+@app.route("/")
+@app.route("/index")
+def index():
+    return render_template("index.html")
+
 @app.route("/testing")
 def testing():
     return "Testando ambiente"
 
 
-@app.route("/")
 @app.route("/home")
 def home():
     return render_template("home.html", title="Início")
-
-
-@app.route("/index")
-def index():
-    return render_template("index.html")
 
 
 @app.route("/account")
@@ -99,9 +99,13 @@ def register():
     # PRECISA ALTERAR O register.html PRA RECEBER O form. DELETE ISTO QUANDO ALTERAR
     return render_template("register.html", title="Cadastrar colaborador", form=form)
 
-@app.route("/login", methods=["POST"])
+@app.route("/login", methods=["POST", "GET"])
 def login():
     form = LoginForm()
+    if form.validate_on_submit():
+        flash(f'Sucesso no login para o usuário {form.email.data}!', category='success')
+        return redirect(url_for('login'))
+
     return render_template("login.html", title="Entar", form=form)
 
 @app.route("/logout")

@@ -32,6 +32,21 @@ body{
     <br>
     <br>
     <br>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            {% with messages = get_flashed_messages(with_categories=True) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="text-center alert alert-{{ category }}">
+                            {{ message}}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
             <div class="panel panel-default large ">
