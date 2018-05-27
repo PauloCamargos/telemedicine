@@ -2,4 +2,4 @@ import sys
  
 sys.path.append('/var/www/telemedicine')
  
-from hello_world import app as application
+from app import app as application
