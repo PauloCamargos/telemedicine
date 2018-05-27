@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-from constants import *
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField, DateField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+from app.constants import *
 # Documentation http://wtforms.simplecodes.com/docs/0.6.1/fields.html
 
 # specialties = constants.specialties

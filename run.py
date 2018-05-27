@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-UserMixin
 import sys
 sys.path.append('app');
 from app import app
