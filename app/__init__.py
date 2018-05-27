@@ -14,6 +14,7 @@ db = SQLAlchemy(app)
 
 # MODELS:
 # Padrão-> classe: singular ; Tabela: plural
+'''
 class User(db.Model):
     pass
 
@@ -34,6 +35,7 @@ class JUserSpecialty(db.Model):
 
 class Message(db.Model):
     pass
+'''
 
 @app.route("/")
 @app.route("/index")
@@ -93,4 +95,4 @@ def show_schedule():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
