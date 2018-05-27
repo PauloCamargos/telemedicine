@@ -1,3 +1,7 @@
+#python
+*.pyc
+*__pycache__
+
 # ignorar estas pastas no servidor
 ignore/
 Site_Ibriza/
