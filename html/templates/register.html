@@ -18,13 +18,32 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             {{ form.email.label(class="form-control-label") }}
+                            {% if form.email.errors %}
+                            <div class="has-error">
+                                {{ form.email(class="form-control has-error")}}
+                                {% for error in form.email.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
                             {{ form.email(class="form-control")}}
+                            {% endif %}
+
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             {{ form.password.label(class="form-control-label") }}
+                            {% if form.password.errors %}
+                            <div class="has-error">
+                                {{ form.password(class="form-control has-error")}}
+                                {% for error in form.password.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
                             {{ form.password(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -32,20 +51,47 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             {{ form.crm.label(class="form-control-label") }}
-                            {{ form.crm(class="form-control") }}
+                            {% if form.crm.errors %}
+                            <div class="has-error">
+                                {{ form.crm(class="form-control has-error")}}
+                                {% for error in form.crm.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.crm(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             {{ form.fullname.label(class="form-control-label") }}
-                            {{ form.fullname(class="form-control") }}
+                            {% if form.fullname.errors %}
+                            <div class="has-error">
+                                {{ form.fullname(class="form-control has-error")}}
+                                {% for error in form.fullname.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.fullname(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
                             {{ form.birthdate.label(class="form-control-label") }}
-                            {{ form.birthdate(class="form-control") }}
+                            {% if form.birthdate.errors %}
+                            <div class="has-error">
+                                {{ form.birthdate(class="form-control has-error")}}
+                                {% for error in form.birthdate.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.birthdate(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -54,28 +100,64 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             {{ form.birthcity.label(class="form-control-label") }}
-                            {{ form.birthcity(class="form-control") }}
+                            {% if form.birthcity.errors %}
+                            <div class="has-error">
+                                {{ form.birthcity(class="form-control has-error")}}
+                                {% for error in form.birthcity.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.birthcity(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
                             {{ form.birthstate.label(class="form-control-label") }}
-                            {{ form.birthstate(class="form-control") }}
+                            {% if form.birthstate.errors %}
+                            <div class="has-error">
+                                {{ form.birthstate(class="form-control has-error")}}
+                                {% for error in form.birthstate.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.birthstate(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
 
                     <div class="col-md-3 col-sm-6">
                         <div class="form-group">
                             {{ form.rg.label(class="form-control-label") }}
-                            {{ form.rg(class="form-control") }}
+                            {% if form.rg.errors %}
+                            <div class="has-error">
+                                {{ form.rg(class="form-control has-error")}}
+                                {% for error in form.rg.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.rg(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
 
                     <div class="col-md-3 col-sm-6">
                         <div class="form-group">
                             {{ form.cpf.label(class="form-control-label") }}
-                            {{ form.cpf(class="form-control") }}
+                            {% if form.cpf.errors %}
+                            <div class="has-error">
+                                {{ form.cpf(class="form-control has-error")}}
+                                {% for error in form.cpf.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.cpf(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -84,21 +166,48 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             {{ form.cep.label(class="form-control-label") }}
-                            {{ form.cep(class="form-control") }}
+                            {% if form.cep.errors %}
+                            <div class="has-error">
+                                {{ form.cep(class="form-control has-error")}}
+                                {% for error in form.cep.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.cep(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
                             {{ form.place.label(class="form-control-label") }}
-                            {{ form.place(class="form-control") }}
+                            {% if form.place.errors %}
+                            <div class="has-error">
+                                {{ form.place(class="form-control has-error")}}
+                                {% for error in form.place.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.place(class="form-control")}}
+                            {% endif %}
                         </select></div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
                             {{ form.residence_address.label(class="form-control-label") }}
-                            {{ form.residence_address(class="form-control") }}
+                            {% if form.residence_address.errors %}
+                            <div class="has-error">
+                                {{ form.residence_address(class="form-control has-error")}}
+                                {% for error in form.residence_address.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.residence_address(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -107,21 +216,48 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             {{ form.neighborhood.label(class="form-control-label") }}
-                            {{ form.neighborhood(class="form-control") }}
+                            {% if form.neighborhood.errors %}
+                            <div class="has-error">
+                                {{ form.neighborhood(class="form-control has-error")}}
+                                {% for error in form.neighborhood.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.neighborhood(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
                             {{ form.city.label(class="form-control-label") }}
-                            {{ form.city(class="form-control") }}
+                            {% if form.city.errors %}
+                            <div class="has-error">
+                                {{ form.city(class="form-control has-error")}}
+                                {% for error in form.city.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.city(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
                             {{ form.state.label(class="form-control-label") }}
-                            {{ form.state(class="form-control") }}
+                            {% if form.state.errors %}
+                            <div class="has-error">
+                                {{ form.state(class="form-control has-error")}}
+                                {% for error in form.state.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.state(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -130,20 +266,47 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             {{ form.phone_1.label(class="form-control-label") }}
-                            {{ form.phone_1(class="form-control") }}
+                            {% if form.phone_1.errors %}
+                            <div class="has-error">
+                                {{ form.phone_1(class="form-control has-error")}}
+                                {% for error in form.phone_1.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.phone_1(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
                             {{ form.phone_2.label(class="form-control-label") }}
-                            {{ form.phone_2(class="form-control") }}
+                            {% if form.phone_2.errors %}
+                            <div class="has-error">
+                                {{ form.phone_2(class="form-control has-error")}}
+                                {% for error in form.phone_2.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.phone_2(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         {{ form.specialty.label(class="form-control-label") }}
-                        {{ form.specialty(class="form-control") }}
+                        {% if form.specialty.errors %}
+                        <div class="has-error">
+                            {{ form.specialty(class="form-control has-error")}}
+                            {% for error in form.specialty.errors %}
+                            <strong class="help-block">{{ error }}</strong>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.specialty(class="form-control")}}
+                        {% endif %}
                     </div>
                 </div>
 
@@ -157,14 +320,32 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             {{ form.business_name.label(class="form-control-label") }}
-                            {{ form.business_name(class="form-control") }}
+                            {% if form.business_name.errors %}
+                            <div class="has-error">
+                                {{ form.business_name(class="form-control has-error")}}
+                                {% for error in form.business_name.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.business_name(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
                             {{ form.social_name.label(class="form-control-label") }}
-                            {{ form.social_name(class="form-control") }}
+                            {% if form.social_name.errors %}
+                            <div class="has-error">
+                                {{ form.social_name(class="form-control has-error")}}
+                                {% for error in form.social_name.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.social_name(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -173,21 +354,48 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             {{ form.clinic_cep.label(class="form-control-label") }}
-                            {{ form.clinic_cep(class="form-control") }}
+                            {% if form.clinic_cep.errors %}
+                            <div class="has-error">
+                                {{ form.clinic_cep(class="form-control has-error")}}
+                                {% for error in form.clinic_cep.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.clinic_cep(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
                             {{ form.clinic_place.label(class="form-control-label") }}
-                            {{ form.clinic_place(class="form-control") }}
+                            {% if form.clinic_place.errors %}
+                            <div class="has-error">
+                                {{ form.clinic_place(class="form-control has-error")}}
+                                {% for error in form.clinic_place.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.clinic_place(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
                             {{ form.clinic_residence_address.label(class="form-control-label") }}
-                            {{ form.clinic_residence_address(class="form-control") }}
+                            {% if form.clinic_residence_address.errors %}
+                            <div class="has-error">
+                                {{ form.clinic_residence_address(class="form-control has-error")}}
+                                {% for error in form.clinic_residence_address.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.clinic_residence_address(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -196,21 +404,48 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             {{ form.clinic_neighborhood.label(class="form-control-label") }}
-                            {{ form.clinic_neighborhood(class="form-control") }}
+                            {% if form.clinic_neighborhood.errors %}
+                            <div class="has-error">
+                                {{ form.clinic_neighborhood(class="form-control has-error")}}
+                                {% for error in form.clinic_neighborhood.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.clinic_neighborhood(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
                             {{ form.clinic_city.label(class="form-control-label") }}
-                            {{ form.clinic_city(class="form-control") }}
+                            {% if form.clinic_city.errors %}
+                            <div class="has-error">
+                                {{ form.clinic_city(class="form-control has-error")}}
+                                {% for error in form.clinic_city.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.clinic_city(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
                             {{ form.clinic_state.label(class="form-control-label") }}
-                            {{ form.clinic_state(class="form-control") }}
+                            {% if form.clinic_state.errors %}
+                            <div class="has-error">
+                                {{ form.clinic_state(class="form-control has-error")}}
+                                {% for error in form.clinic_state.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.clinic_state(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -219,21 +454,48 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             {{ form.clinic_phone_1.label(class="form-control-label") }}
-                            {{ form.clinic_phone_1(class="form-control") }}
+                            {% if form.clinic_phone_1.errors %}
+                            <div class="has-error">
+                                {{ form.clinic_phone_1(class="form-control has-error")}}
+                                {% for error in form.clinic_phone_1.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.clinic_phone_1(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
                             {{ form.clinic_phone_2.label(class="form-control-label") }}
-                            {{ form.clinic_phone_2(class="form-control") }}
+                            {% if form.clinic_phone_2.errors %}
+                            <div class="has-error">
+                                {{ form.clinic_phone_2(class="form-control has-error")}}
+                                {% for error in form.clinic_phone_2.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.clinic_phone_2(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
                             {{ form.clinic_email.label(class="form-control-label") }}
-                            {{ form.clinic_email(class="form-control") }}
+                            {% if form.clinic_email.errors %}
+                            <div class="has-error">
+                                {{ form.clinic_email(class="form-control has-error")}}
+                                {% for error in form.clinic_email.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.clinic_email(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -242,14 +504,32 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             {{ form.cnpj.label(class="form-control-label") }}
-                            {{ form.cnpj(class="form-control") }}
+                            {% if form.cnpj.errors %}
+                            <div class="has-error">
+                                {{ form.cnpj(class="form-control has-error")}}
+                                {% for error in form.cnpj.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.cnpj(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
                             {{ form.state_inscription.label(class="form-control-label") }}
-                            {{ form.state_inscription(class="form-control") }}
+                            {% if form.state_inscription.errors %}
+                            <div class="has-error">
+                                {{ form.state_inscription(class="form-control has-error")}}
+                                {% for error in form.state_inscription.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.state_inscription(class="form-control")}}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -257,7 +537,7 @@
             <br><br>
             <div class="form-group">
                 <div class="form-group">
-                    {{ form.submit(class="btn btn-info btn-block") }}
+                    {{ form.submit(class="btn btn-danger btn-block") }}
                 </div>
             </div>
         </form>

@@ -13,7 +13,7 @@
             <select class="form-control" id="selectSpecialy" name="selectSpecialty" onchange="this.form.submit()">
                 <option value="0">Selecione uma especialidade...</option>
                 {% for speciality in specialties %}
-                <option value="{{speciality }}">{{speciality | title }}</option>
+                <option value="{{ speciality }}">{{ speciality }}</option>
                 {% endfor %}
             </select>
         </div>

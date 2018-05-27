@@ -50,6 +50,6 @@ class DoctorRegistrationForm(FlaskForm):
 # LoginForm
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Senha', validators=[DataRequired(), Length(min=6, max=10)])
+    password = PasswordField('Senha', validators=[DataRequired()])
     remember_me = BooleanField('Salvar informações')
     submit = SubmitField('Entrar')
