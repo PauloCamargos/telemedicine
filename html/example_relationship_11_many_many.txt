@@ -1,0 +1,64 @@
+# RELAÇÃO: um para muitos
+# one Person can have many Pets. One Pet can have only one Person
+class Person(db.Model):
+	id = db.Column(db.Integer, primary_key = True)
+	name = db.Column(db.String(20))
+	pets = db.relationship('Pet', backref='owner')
+
+class Pet(db.Model):
+	id = db.Column(db.Integer, primary_key = True)
+	name = db.Column(db.String(20))
+	owner_id = db.Column(db.Integer, db.ForeignKey('person.id'))
+
+
+>>> joao =  Person(name='Joao')
+>>> auau = Pet(name='Auau', owner=joao)
+>>> some_person = Person.query.filter_by(name='Joao')
+>>> some_person.pets
+[pet 1]
+>>> some_pet = Pet.query.filter_by(name='Auau')
+>>> som_pet.owner.name
+'Joao'
+
+# ----------------------------------------------------------------------------
+
+# RELAÇÃO: muitos para muitos
+# * User can subscribe to * Channels, * Channels can have * Users
+
+# Standalone table: we dont manipulate them. Its a intermediate table
+subs = db.Table(
+	tablename='subs',
+	db.Column('user_id', db.Integer, db.ForeignKey('user.user_id')),
+	db.Column('channel_id', db.Integer, db.ForeignKey('channel.channel_id'))
+	)
+
+class User(db.Model):
+	user_id = db.Column(db.Integer, primary_key=True)
+	name = db.Column(db.String(20))
+	#associating subs table to user
+	subscriptions = db.relationship('Channel', secondary=subs, backref=db.backref('subscribers', lazy='dynamic'))
+  	# it is as 'subscribers' were a field of Channel
+
+class Channel(db.Model):
+	channel_id =  db.Column(db.Integer, primary_key=True)
+	channel_name = db.Column(db.String(20))
+
+
+>>> user1 = User(name='Joao')
+>>> user2 = User(name='Paulo')
+>>> user3 = User(name='Silva')
+>>> user4 = User(name='Camargos')
+# add and commit all
+>>> channel1 = Channel(channel_name='GLOBO')
+>>> channel2 = Channel(channel_name='SBT')
+# add and commit all
+>>> channel1.subscriber.append(user1)
+>>> channel2.subscriber.append(user2)
+>>> channel2.subscriber.append(user2)
+>>> channel1.subscriber.append(user3)
+>>> db.session.commit()
+# then, subs table will be fieled with the channel and users records
+>>> for user in channel1.subscribers:
+	print user.name
+
+

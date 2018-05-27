@@ -28,3 +28,6 @@
     	`$ pip install bcrypt`
 
 1. Start coding!
+
+**Use-Cases**
+![](./../docs/uml-diagrams/teleespecialista_uml.png)
