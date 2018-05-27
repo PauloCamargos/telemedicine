@@ -13,8 +13,27 @@ app.config['SQLACHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
 
 # MODELS:
-# class User
+# Padrão-> classe: singular ; Tabela: plural
+class User(db.Model):
+    pass
 
+class Clinic(db.Model):
+    pass
+
+class Appointment(db.Model):
+    pass
+
+class Specialty(db.Model):
+    pass
+
+class JUserClinic(db.Model):
+    pass
+
+class JUserSpecialty(db.Model):
+    pass
+
+class Message(db.Model):
+    pass
 
 @app.route("/")
 @app.route("/index")
