@@ -56,7 +56,7 @@ def index():
     </ul>
     '''
 #    return render_template("index.html")
-
+'''
 @app.route("/testing")
 def testing():
     return "Testando ambiente"
@@ -106,6 +106,6 @@ def logout():
 def show_schedule():
     return render_template("show_schedule.html", title="Minha agenda")
 
-
+'''
 if __name__ == '__main__':
     app.run(debug=True)
