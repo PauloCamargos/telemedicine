@@ -41,7 +41,7 @@ db = SQLAlchemy(app)
 @app.route("/")
 @app.route("/index")
 def index():
-    return '''Testando
+    return '''Testando o servidor
     <ul>
         <li><a href=index>Início (this page)</a></li>
         <li><a href=testing>testing</a></li>
