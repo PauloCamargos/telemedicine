@@ -1,5 +1,5 @@
 from flask import render_template, redirect, url_for, flash
-from app import app
+from app import app, db, bcrypt
 from app.forms import DoctorRegistrationForm, LoginForm
 from app.models import User, Clinic
 from app.constants import *
@@ -53,9 +53,53 @@ def check_requests():
 @app.route("/register", methods=["POST", "GET"])
 def register():
     form = DoctorRegistrationForm();
+
     if form.validate_on_submit():
-        flash(f'Sucesso no login para o usuário {form.email.data}!', category='success')
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+
+        doctor = User(
+        email=form.email.data,
+        password=hashed_password,
+        fullname=form.fullname.data,
+        rg=form.rg.data ,
+        cpf=form.cpf.data,
+        phone_1=form.phone_1.data,
+        cep=form.cep.data
+        )
+
+        clinic = Clinic(
+        business_name=form.business_name.data,
+        company_name=form.social_name.data,
+        phone_1=form.phone_1.data,
+        email=form.clinic_email.data,
+        state_inscription=form.state_inscription.data
+        )
+
+        print(doctor)
+        print(clinic)
+
+        flash(f'Registro efetuado para {doctor.fullname}!', category='success')
         return redirect(url_for('register'))
+    else:
+        paulo = User(email='paulo.camargos@hotmail.com', password='paulosilva', crm='1234', fullname='Paulo Camargos', rg='12343214',cpf='12343213243', phone_1='92226633')
+        hcufu = Clinic(business_name='HC UFU', company_name='Hosp. Universitário', phone_1='32892140', email='hc@ufu.br')
+        # POPULANDO O FORMULARIO COM VALORES PADROES
+        form.email.data = paulo.email
+        # form.password.data = paulo.password
+        # form.confirm_password.data = paulo.password
+        form.crm.data = paulo.crm
+        form.fullname.data = paulo.fullname
+        form.rg.data = paulo.rg
+        form.cpf.data = paulo.cpf
+        form.phone_1.data = paulo.phone_1
+        form.specialty.data  = '3'
+        form.cep.data = None
+        # clinic form infos
+        form.business_name.data = hcufu.business_name
+        form.social_name.data = hcufu.company_name
+        form.clinic_phone_1.data = hcufu.phone_1
+        form.clinic_email.data = hcufu.email
+
     # PRECISA ALTERAR O register.html PRA RECEBER O form. DELETE ISTO QUANDO ALTERAR
     return render_template("register.html", title="Cadastrar colaborador - TeleEspecialista", form=form)
 

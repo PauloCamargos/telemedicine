@@ -3,7 +3,7 @@
 <h1 class="page-header">Cadastar colaborador</h1>
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Cadastro</h3>
+        <h3 class="panel-title">Preencha o formulário</h3>
     </div>
     <div class="panel-body">
         <form method="post" action="">
@@ -15,9 +15,9 @@
             <fieldset>
                 <legend><h4>Informações pessoais</h4></legend>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
-                            {{ form.email.label(class="form-control-label") }}
+                            <strong>*</strong> {{ form.email.label(class="form-control-label") }}
                             {% if form.email.errors %}
                             <div class="has-error">
                                 {{ form.email(class="form-control has-error")}}
@@ -31,9 +31,9 @@
 
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
-                            {{ form.password.label(class="form-control-label") }}
+                            <strong>*</strong> {{ form.password.label(class="form-control-label") }}
                             {% if form.password.errors %}
                             <div class="has-error">
                                 {{ form.password(class="form-control has-error")}}
@@ -46,11 +46,27 @@
                             {% endif %}
                         </div>
                     </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <strong>*</strong> {{ form.confirm_password.label(class="form-control-label") }}
+                            {% if form.confirm_password.errors %}
+                            <div class="has-error">
+                                {{ form.confirm_password(class="form-control has-error")}}
+                                {% for error in form.confirm_password.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.confirm_password(class="form-control")}}
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="form-group">
-                            {{ form.crm.label(class="form-control-label") }}
+                            <strong>*</strong> {{ form.crm.label(class="form-control-label") }}
                             {% if form.crm.errors %}
                             <div class="has-error">
                                 {{ form.crm(class="form-control has-error")}}
@@ -65,7 +81,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            {{ form.fullname.label(class="form-control-label") }}
+                        <strong>*</strong> {{ form.fullname.label(class="form-control-label") }}
                             {% if form.fullname.errors %}
                             <div class="has-error">
                                 {{ form.fullname(class="form-control has-error")}}
@@ -79,7 +95,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="form-group">
                             {{ form.birthdate.label(class="form-control-label") }}
                             {% if form.birthdate.errors %}
@@ -131,7 +147,7 @@
 
                     <div class="col-md-3 col-sm-6">
                         <div class="form-group">
-                            {{ form.rg.label(class="form-control-label") }}
+                            <strong>*</strong> {{ form.rg.label(class="form-control-label") }}
                             {% if form.rg.errors %}
                             <div class="has-error">
                                 {{ form.rg(class="form-control has-error")}}
@@ -147,7 +163,7 @@
 
                     <div class="col-md-3 col-sm-6">
                         <div class="form-group">
-                            {{ form.cpf.label(class="form-control-label") }}
+                            <strong>*</strong> {{ form.cpf.label(class="form-control-label") }}
                             {% if form.cpf.errors %}
                             <div class="has-error">
                                 {{ form.cpf(class="form-control has-error")}}
@@ -265,7 +281,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
-                            {{ form.phone_1.label(class="form-control-label") }}
+                            <strong>*</strong> {{ form.phone_1.label(class="form-control-label") }}
                             {% if form.phone_1.errors %}
                             <div class="has-error">
                                 {{ form.phone_1(class="form-control has-error")}}
@@ -319,7 +335,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            {{ form.business_name.label(class="form-control-label") }}
+                        <strong>*</strong> {{ form.business_name.label(class="form-control-label") }}
                             {% if form.business_name.errors %}
                             <div class="has-error">
                                 {{ form.business_name(class="form-control has-error")}}
@@ -335,7 +351,7 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            {{ form.social_name.label(class="form-control-label") }}
+                            <strong>*</strong> {{ form.social_name.label(class="form-control-label") }}
                             {% if form.social_name.errors %}
                             <div class="has-error">
                                 {{ form.social_name(class="form-control has-error")}}
@@ -453,7 +469,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
-                            {{ form.clinic_phone_1.label(class="form-control-label") }}
+                            <strong>*</strong> {{ form.clinic_phone_1.label(class="form-control-label") }}
                             {% if form.clinic_phone_1.errors %}
                             <div class="has-error">
                                 {{ form.clinic_phone_1(class="form-control has-error")}}
@@ -485,7 +501,7 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            {{ form.clinic_email.label(class="form-control-label") }}
+                            <strong>*</strong> {{ form.clinic_email.label(class="form-control-label") }}
                             {% if form.clinic_email.errors %}
                             <div class="has-error">
                                 {{ form.clinic_email(class="form-control has-error")}}
@@ -537,7 +553,7 @@
             <br><br>
             <div class="form-group">
                 <div class="form-group">
-                    {{ form.submit(class="btn btn-danger btn-block") }}
+                    {{ form.submit(class="btn btn-primary btn-block") }}
                 </div>
             </div>
         </form>

@@ -25,7 +25,7 @@
     - Flask-login (https://flask-login.readthedocs.io/en/latest/)
     	`$ pip install flask-login`
     - Bcrypt (https://pypi.org/project/bcrypt/)
-    	`$ pip install bcrypt`
+    	`$ pip install flask-bcrypt`
 
 1. Start coding!
 

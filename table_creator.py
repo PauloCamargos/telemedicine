@@ -1,5 +1,6 @@
 from app import db
 from app.models import User, Clinic, Specialty
+# docs: http://flask-sqlalchemy.pocoo.org/2.3/queries/
 
 db.drop_all()
 db.create_all()
@@ -40,6 +41,7 @@ dermatologia.doctors.append(paulo)
 
 db.session.commit()
 
+# TESTANDO A CRIAÇÃO DAS TABELAS E SEUS RESPECTIVOS RELACIONAMENTOS
 for e in hcufu.employees:
     print('Medicos da clinica: ')
     print(e)

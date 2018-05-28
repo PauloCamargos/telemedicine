@@ -74,10 +74,22 @@ class Specialty(db.Model):
 
 
 
-class Appointment(db.Model):
-    pass
-
-
-
-    def __repr__(self):
-        return f"Specialty('{self.id}','{self.specialty}')"
+# class Appointment(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     # format crm: 0000000000000/MG
+#     business_name = db.Column(db.String(256), nullable=False)
+#     company_name = db.Column(db.String(256), unique=True, nullable=False)
+#     cep = db.Column(db.Integer)
+#     place = db.Column(db.String(64))
+#     address = db.Column(db.String(256))
+#     neighborhood = db.Column(db.String(120))
+#     city = db.Column(db.String(120))
+#     state = db.Column(db.String(2))
+#     phone_1 = db.Column(db.String(16), nullable=False)
+#     phone_2 = db.Column(db.String(16))
+#     email = db.Column(db.String(120), unique=True, nullable=False)
+#     cnpj = db.Column(db.String(16))
+#     state_inscription = db.Column(db.String(32), unique=True)
+#
+#     def __repr__(self):
+#         return f"Specialty('{self.id}','{self.specialty}')"
