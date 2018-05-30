@@ -1,4 +1,9 @@
-from app import db
+from app import db, login_manager
+from flask_login import UserMixin
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 # Table representing a relationship *.* between Clinic and User
 # joinClinicUser = db.Table(
@@ -15,7 +20,7 @@ joinsSpecialtyUser = db.Table(
 )
 
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(64), nullable=False)

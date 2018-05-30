@@ -1,13 +1,16 @@
-from flask import render_template, redirect, url_for, flash
+from flask import render_template, redirect, url_for, flash, request
 from app import app, db, bcrypt
 from app.forms import DoctorRegistrationForm, LoginForm
 from app.models import User, Specialty
 from app.constants import *
-
+from flask_login import login_user, current_user, logout_user, login_required
 
 @app.route("/")
 @app.route("/index")
 def index():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+
     # return Testando o servidor
     # <ul>
     #     <li><a href=index>Início (this page)</a></li>
@@ -24,6 +27,15 @@ def index():
 
     return render_template("index.html")
 
+@app.route("/contact")
+def contact():
+    return "TODO"
+
+
+@app.route("/about")
+def about():
+    return "TODO"
+
 
 @app.route("/testing")
 def testing():
@@ -36,6 +48,7 @@ def home():
 
 
 @app.route("/account")
+@login_required
 def account():
     return render_template("account.html", title="Atualizar informações - TeleEspecialista")
 
@@ -52,6 +65,7 @@ def check_requests():
 
 @app.route("/register", methods=["POST", "GET"])
 def register():
+
     form = DoctorRegistrationForm();
 
     if form.validate_on_submit():
@@ -100,17 +114,29 @@ def register():
 
 @app.route("/login", methods=["POST", "GET"])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+
     form = LoginForm()
     if form.validate_on_submit():
-        flash(f'Sucesso no login para o usuário {form.email.data}!', category='success')
-        return redirect(url_for('home'))
+        user  = User.query.filter_by(email=form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user, remember=form.remember_me.data)
+            # redireciona para a url digitada apos logar
+            next_page= request.args.get('next')
+            return redirect(next_page) if next_page else redirect(url_for('home'))
+            # flash(f'Sucesso no login para o usuário {form.email.data}!', category='success')
+        else:
+            flash('Usuário e/ou senha incorretos! Tente novamente.', category='danger')
+
 
     return render_template("login.html", title="Entar - TeleEspecialista", form=form)
 
 
 @app.route("/logout")
 def logout():
-    return redirect(url_for("index"))
+    logout_user()
+    return redirect(url_for("login"))
 
 
 @app.route("/show_schedule")

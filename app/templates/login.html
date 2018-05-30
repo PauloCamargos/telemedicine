@@ -27,11 +27,19 @@ body{
 }
 </style>
 <body>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ url_for('index') }}">TeleEspecialista</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ url_for('index') }}">Início</a></li>
+                <li><a href="{{ url_for('contact') }}">Contato</a></li>
+                <li><a href="{{ url_for('about') }}">Sobre</a></li>
+            </ul>
+        </div>
+    </nav>
+
 
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -84,8 +92,10 @@ body{
                         </div>
 
                         <div class="form-group">
-                            {{ form.remember_me.label(class="checkbox") }}
-                            {{ form.remember_me(class="checkbox") }}
+                            <label>
+                                {{ form.remember_me.label(class="checkbox") }}
+                                {{ form.remember_me(class="checkbox") }}
+                            </label>
                         </div>
 
                         <div class="form-group">
