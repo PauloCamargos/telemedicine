@@ -1,11 +1,11 @@
 from app import db
 
 # Table representing a relationship *.* between Clinic and User
-joinClinicUser = db.Table(
-    'joinClinicUser',
-    db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
-    db.Column('clinic_id', db.Integer, db.ForeignKey('clinic.id'))
-)
+# joinClinicUser = db.Table(
+#     'joinClinicUser',
+#     db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
+#     db.Column('clinic_id', db.Integer, db.ForeignKey('clinic.id'))
+# )
 
 # Table representing a relationship *.* between Specialty and User
 joinsSpecialtyUser = db.Table(
@@ -36,33 +36,12 @@ class User(db.Model):
     phone_1 = db.Column(db.String(16), nullable=False)
     phone_2 = db.Column(db.String(16))
     # FKs
-    clinics = db.relationship('Clinic', secondary=joinClinicUser, backref=db.backref('employees', lazy='dynamic'))
+    # clinics = db.relationship('Clinic', secondary=joinClinicUser, backref=db.backref('employees', lazy='dynamic'))
     # appointments = db.relationship('Appointment', backref='specialist', lazy=True)
     specialties = db.relationship('Specialty', secondary=joinsSpecialtyUser, backref=db.backref('doctors', lazy='dynamic'))
 
     def __repr__(self):
-        return f"User('{self.id}','{self.crm}','{self.fullname}')"
-
-
-class Clinic(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    # format crm: 0000000000000/MG
-    business_name = db.Column(db.String(256), nullable=False)
-    company_name = db.Column(db.String(256), unique=True, nullable=False)
-    cep = db.Column(db.Integer)
-    place = db.Column(db.String(64))
-    address = db.Column(db.String(256))
-    neighborhood = db.Column(db.String(120))
-    city = db.Column(db.String(120))
-    state = db.Column(db.String(2))
-    phone_1 = db.Column(db.String(16), nullable=False)
-    phone_2 = db.Column(db.String(16))
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    cnpj = db.Column(db.String(16))
-    state_inscription = db.Column(db.String(32), unique=True)
-
-    def __repr__(self):
-        return f"Clinic('{self.id}','{self.business_name}')"
+        return f"User('{self.id}','{self.crm}','{self.fullname}, {self.specialties}')"
 
 
 class Specialty(db.Model):

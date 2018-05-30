@@ -35,3 +35,9 @@ hs_err_pid*
 
 #templates
 templatehtml/
+
+#lixo
+trash/
+
+#todo
+TODO.txt
