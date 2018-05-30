@@ -61,6 +61,7 @@ def register():
         email=form.email.data,
         password=hashed_password,
         fullname=form.fullname.data,
+        crm=form.crm.data,
         rg=form.rg.data ,
         cpf=form.cpf.data,
         phone_1=form.phone_1.data,
@@ -75,8 +76,16 @@ def register():
         state_inscription=form.state_inscription.data
         )
 
-        print(doctor)
-        print(clinic)
+        # print(doctor)
+        # print(clinic)
+        # db.create_all()
+
+        db.session.add(doctor)
+        db.session.commit()
+        db.session.add(clinic)
+        db.session.commit()
+        clinic.employees.append(doctor)
+        db.session.commit()
 
         flash(f'Registro efetuado para {doctor.fullname}!', category='success')
         return redirect(url_for('register'))
