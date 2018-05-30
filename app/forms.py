@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from flask_wtf import FlaskForm
+from flask_login import current_user
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField, DateField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, NumberRange, Optional, ValidationError
 from app.constants import *
@@ -16,8 +17,8 @@ class DoctorRegistrationForm(FlaskForm):
     confirm_password = PasswordField('Confirme a senha', validators=[DataRequired(), Length(min=4, max=32), EqualTo('password')])
     crm = IntegerField('CRM', validators=[DataRequired()])
     fullname = StringField('Nome completo', validators=[DataRequired()])
-    birthdate = DateField('Data de nascimento', format='%d/%m/%Y',validators=[Optional()])
-    birthcity = StringField('Cidade de nascimento')
+    birthdate = DateField('Data de nascimento', format='%d/%m/%Y',validators=[DataRequired()])
+    birthcity = StringField('Cidade de nascimento', validators=[DataRequired()])
     # full_state = states.values()
     birthstate = SelectField('Estado de nascimento', choices=states_dict.items())
     rg = StringField('RG', validators=[DataRequired()])
@@ -60,3 +61,27 @@ class LoginForm(FlaskForm):
     password = PasswordField('Senha', validators=[DataRequired()])
     remember_me = BooleanField('Salvar informações')
     submit = SubmitField('Entrar')
+
+
+class UpdateAccountForm(FlaskForm):
+    # Doctor infos
+    password = PasswordField('Senha', validators=[DataRequired(), Length(min=4, max=16)])
+    confirm_password = PasswordField('Confirme a senha', validators=[DataRequired(), Length(min=4, max=32), EqualTo('password')])
+    email = StringField('Email', validators=[DataRequired(message='Email inválido'), Email()])
+    cep = IntegerField('CEP', validators=[Optional()])
+    place = SelectField('Logradouro', choices=logradouro_dict.items())
+    residence_address = StringField('Endereço residencial')
+    neighborhood = StringField('Bairro')
+    city = StringField('Cidade')
+    state = SelectField('Estado', choices=states_dict.items())
+    phone_1 = IntegerField('Telefone celular', validators=[DataRequired()])
+    phone_2 = IntegerField('Telefone fixo', validators=[Optional()])
+    # specialty = SelectField('Especialidade', validators=[DataRequired()], choices=specialties_dict.items())
+
+    submit = SubmitField('Atualizar dados')
+
+    def validate_email(self,email):
+        if email.data != current_user.email:
+            user = User.query.filter_by(email=email.data).first()
+            if user:
+                raise ValidationError('Este email já foi utilizado. Escolha outro.')

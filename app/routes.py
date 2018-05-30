@@ -1,6 +1,6 @@
 from flask import render_template, redirect, url_for, flash, request
 from app import app, db, bcrypt
-from app.forms import DoctorRegistrationForm, LoginForm
+from app.forms import DoctorRegistrationForm, LoginForm, UpdateAccountForm
 from app.models import User, Specialty
 from app.constants import *
 from flask_login import login_user, current_user, logout_user, login_required
@@ -47,10 +47,39 @@ def home():
     return render_template("home.html", title="Início - TeleEspecialista")
 
 
-@app.route("/account")
+@app.route("/account", methods=['GET', 'POST'])
 @login_required
 def account():
-    return render_template("account.html", title="Atualizar informações - TeleEspecialista")
+    form = UpdateAccountForm()
+    if form.validate_on_submit():
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+
+        # current_user.password = hashed_password
+        current_user.email = form.email.data
+        current_user.cep  = form.cep.data
+        current_user.place  = form.place.data
+        current_user.address = form.residence_address.data
+        current_user.neighborhood = form.neighborhood.data
+        current_user.city = form.city.data
+        current_user.state = form.state.data
+        current_user.phone_1 = form.phone_1.data
+        current_user.phone_2 = form.phone_2.data
+        db.session.commit()
+        flash('Sua conta foi atualizada com sucesso!', category='success')
+        return redirect(url_for('account'))
+    elif request.method == 'GET':
+        print('Não valido')
+        form.email.data = current_user.email
+        form.cep.data = current_user.cep
+        form.place.data = current_user.place
+        form.residence_address.data = current_user.address
+        form.neighborhood.data = current_user.neighborhood
+        form.city.data = current_user.city
+        form.state.data = str(current_user.state)
+        form.phone_1.data = current_user.phone_1
+        form.phone_2.data = current_user.phone_2
+        # form.specialty.data = str(current_user.specialties[0].specialty)
+    return render_template("account.html", title="Atualizar informações - TeleEspecialista", form=form)
 
 
 @app.route("/search_specialist")
@@ -69,7 +98,6 @@ def register():
     form = DoctorRegistrationForm();
 
     if form.validate_on_submit():
-        print("Form valido")
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
 
         doctor = User(
@@ -77,10 +105,19 @@ def register():
         password=hashed_password,
         crm=form.crm.data,
         fullname=form.fullname.data,
+        birthdate=form.birthdate.data,
+        birthcity=form.birthcity.data,
+        birthstate=form.state.data,
         rg=form.rg.data ,
         cpf=form.cpf.data,
+        cep=form.cep.data,
+        place=form.place.data,
+        address=form.residence_address.data,
+        neighborhood=form.neighborhood.data,
+        city=form.city.data,
+        state=form.state.data,
         phone_1=form.phone_1.data,
-        cep=form.cep.data
+        phone_2=form.phone_2.data
         )
 
         specialty = Specialty.query.filter_by(id=form.specialty.data).first()
@@ -92,7 +129,7 @@ def register():
 
         flash(f'Registro efetuado para {doctor.fullname}!', category='success')
         return redirect(url_for('register'))
-    else:
+    elif request.method == 'GET':
         paulo = User(email='paulo.camargos@hotmail.com', password='paulosilva',
          crm='1234', fullname='Paulo Camargos', rg='12343214',cpf='12343213243',
           phone_1='92226633')

@@ -30,6 +30,7 @@ class User(db.Model, UserMixin):
     fullname = db.Column(db.String(256), nullable=False)
     birthdate = db.Column(db.DateTime)
     birthcity = db.Column(db.String(256))
+    birthstate = db.Column(db.String(2))
     rg = db.Column(db.String(12), unique=True, nullable=False)
     cpf = db.Column(db.String(12), unique=True, nullable=False)
     cep = db.Column(db.Integer)

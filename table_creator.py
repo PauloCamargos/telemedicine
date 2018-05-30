@@ -16,11 +16,11 @@ db.session.commit()
 PARTE DE TESTES COM O BANCO DE DADOS
 """
 # Criando usuarios
-# paulo = User(email='paulo.camargos@hotmail.com', password='123456', crm='1234', fullname='Paulo Camargos', rg='123',cpf='123', phone_1='92226633')
-# italo = User(email='italo@hotmail.com', password='123456', crm='4321', fullname='Italo Fernandes', rg='321',cpf='321', phone_1='92102109')
-# db.session.add(italo)
-# db.session.add(paulo)
-# db.session.commit()
+paulo = User(email='paulo.camargos@hotmail.com', password='admin', crm='1234', fullname='Paulo Camargos', rg='123',cpf='123', phone_1='92226633')
+italo = User(email='italo@hotmail.com', password='admin', crm='4321', fullname='Italo Fernandes', rg='321',cpf='321', phone_1='92102109')
+db.session.add(italo)
+db.session.add(paulo)
+db.session.commit()
 #
 # # Criando uma clinica
 # hcufu = Clinic(business_name='HC UFU', company_name='Hosp. Universitário', phone_1='32892140', email='hc@ufu.br')
