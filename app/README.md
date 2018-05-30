@@ -26,6 +26,8 @@
     	`$ pip install flask-login`
     - Bcrypt (https://pypi.org/project/bcrypt/)
     	`$ pip install flask-bcrypt`
+    - Psycopg2
+        $ pip install psycopg2 (http://initd.org/psycopg/)
 
 1. Start coding!
 

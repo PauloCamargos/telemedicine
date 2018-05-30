@@ -43,6 +43,7 @@ def testing():
 
 
 @app.route("/home")
+@login_required
 def home():
     return render_template("home.html", title="Início - TeleEspecialista")
 
@@ -83,16 +84,21 @@ def account():
 
 
 @app.route("/search_specialist")
+@login_required
 def search_specialist():
-    return render_template("search_specialist.html", title="Buscar - TeleEspecialista", specialties=specialties_dict.values(), image_file="static/profilePics/default.jpeg")
+    return render_template("search_specialist.html",
+    title="Buscar - TeleEspecialista", specialties=specialties_dict.values(),
+    image_file="static/profilePics/default.jpeg")
 
 
 @app.route("/check_requests")
+@login_required
 def check_requests():
     return render_template("check_requests.html", title="Minhas solicitações - TeleEspecialista")
 
 
 @app.route("/register", methods=["POST", "GET"])
+# @login_required
 def register():
 
     form = DoctorRegistrationForm();
@@ -177,11 +183,13 @@ def logout():
 
 
 @app.route("/show_schedule")
+@login_required
 def show_schedule():
     return render_template("show_schedule.html", title="Minha agenda - TeleEspecialista")
 
 
 @app.route("/staff")
+@login_required
 def staff():
     users = User.query.all()
     return render_template("staff.html", title="Colaboradores-TeleEspecialista", users=users)

@@ -26,7 +26,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(64), nullable=False)
     image_file = db.Column(db.String(100))
     # format crm: 0000000000000/MG
-    crm = db.Column(db.String(13), unique=True, nullable=False)
+    crm = db.Column(db.Integer, unique=True, nullable=False)
     fullname = db.Column(db.String(256), nullable=False)
     birthdate = db.Column(db.DateTime)
     birthcity = db.Column(db.String(256))
