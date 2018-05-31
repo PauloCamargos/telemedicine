@@ -45,7 +45,11 @@ def testing():
 @app.route("/home")
 @login_required
 def home():
-    return render_template("home.html", title="Início - TeleEspecialista")
+    if current_user.specialties[0].specialty == 'Geral':
+        homepage = 'home.html'
+    else:
+        homepage = 'homeSpecialist.html'
+    return render_template(homepage, title="Início - TeleEspecialista")
 
 
 @app.route("/account", methods=['GET', 'POST'])
@@ -193,3 +197,15 @@ def show_schedule():
 def staff():
     users = User.query.all()
     return render_template("staff.html", title="Colaboradores-TeleEspecialista", users=users)
+
+# ESPECIALISTA
+@app.route('/new_scale')
+@login_required
+def new_scale():
+    return render_template("new_scale.html", title="Cadastrar escala-TeleEspecialita")
+
+
+@app.route("/my_calls")
+@login_required
+def my_calls():
+    return render_template("my_calls.html", title="Meus chamados")
