@@ -19,6 +19,11 @@ joinsSpecialtyUser = db.Table(
     db.Column('specialty_id', db.Integer, db.ForeignKey('specialty.id'))
 )
 
+joinCalendarUser = db.Table(
+    'joinCalendarUser',
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
+    db.Column('calendar_id', db.Integer, db.ForeignKey('calendar.id'))
+)
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -41,22 +46,45 @@ class User(db.Model, UserMixin):
     state = db.Column(db.String(2))
     phone_1 = db.Column(db.String(16), nullable=False)
     phone_2 = db.Column(db.String(16))
-    # FKs
-    # clinics = db.relationship('Clinic', secondary=joinClinicUser, backref=db.backref('employees', lazy='dynamic'))
-    # appointments = db.relationship('Appointment', backref='specialist', lazy=True)
-    specialties = db.relationship('Specialty', secondary=joinsSpecialtyUser, backref=db.backref('doctors', lazy='dynamic'))
+    # Foreign Keys
+    # clinics = db.relationship('Clinic', secondary=joinClinicUser,
+    # backref=db.backref('employees', lazy='dynamic'))
+    # appointments = db.relationship('Appointment', backref='specialist',
+    #lazy=True)
+    specialties = db.relationship('Specialty', secondary=joinsSpecialtyUser,
+    backref=db.backref('doctors', lazy='dynamic'))
+    shifts = db.relationship('Calendar', secondary=joinCalendarUser,
+    backref=db.backref('doctor', lazy='dynamic'))
 
     def __repr__(self):
-        return f"User('{self.id}','{self.crm}','{self.fullname}, {self.specialties}')"
+        return f"User('{self.id}','{self.crm}','{self.fullname}',\
+        '{self.specialties}')"
 
 
 class Specialty(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     specialty = db.Column(db.String(64), unique=True, nullable=False)
-
+    # fks: user
+    # Foreign keys
+    service_days = db.relationship('Calendar', backref='specialty')
     def __repr__(self):
         return f"Specialty('{self.id}','{self.specialty}')"
 
+
+class Calendar(db.Model):
+    """
+    This class represent only one day in a month. It has a Doctor, a specialty,
+    date and time which this doctor will attend.
+    -> User *.* Calendar
+    -> Specialty 1.* Calendar
+    """
+
+    id = db.Column(db.Integer, primary_key=True)
+    shift_start = db.Column(db.DateTime, nullable=False)
+    shift_false = db.Column(db.DateTime, nullable=False)
+    # fks: user(specialist) and specialty
+    # Foreign Keys
+    specialty_id = db.Column(db.Integer, db.ForeignKey('specialty.id'))
 
 
 # class Appointment(db.Model):

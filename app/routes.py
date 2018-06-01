@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, flash, request
 from app import app, db, bcrypt
-from app.forms import DoctorRegistrationForm, LoginForm, UpdateAccountForm
-from app.models import User, Specialty
+from app.forms import DoctorRegistrationForm, LoginForm, UpdateAccountForm, CalendarForm
+from app.models import User, Specialty, Calendar
 from app.constants import *
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -104,7 +104,10 @@ def check_requests():
 @app.route("/register", methods=["POST", "GET"])
 # @login_required
 def register():
-
+    # if current_user.specialties[0].specialty == 'Geral':
+    #     register_url = "register.html"
+    # else:
+    #     register_url = "register_specialist.html"
     form = DoctorRegistrationForm();
 
     if form.validate_on_submit():
@@ -138,7 +141,7 @@ def register():
         db.session.commit()
 
         flash(f'Registro efetuado para {doctor.fullname}!', category='success')
-        return redirect(url_for('register'))
+        return redirect(url_for("register.html"))
     elif request.method == 'GET':
         paulo = User(email='paulo.camargos@hotmail.com', password='paulosilva',
          crm='1234', fullname='Paulo Camargos', rg='12343214',cpf='12343213243',
@@ -195,17 +198,31 @@ def show_schedule():
 @app.route("/staff")
 @login_required
 def staff():
-    users = User.query.all()
-    return render_template("staff.html", title="Colaboradores-TeleEspecialista", users=users)
+    u = User.query.all()
+    return render_template("staff.html", title="Colaboradores-TeleEspecialista", users=u)
+
 
 # ESPECIALISTA
 @app.route('/new_scale')
 @login_required
 def new_scale():
-    return render_template("new_scale.html", title="Cadastrar escala-TeleEspecialita")
+    form = CalendarForm()
+    return render_template("new_scale.html", title="Cadastrar escala-TeleEspecialita", form=form)
 
 
 @app.route("/my_calls")
 @login_required
 def my_calls():
     return render_template("my_calls.html", title="Meus chamados")
+
+
+@app.route("/my_schedule")
+@login_required
+def my_schedule():
+    return render_template("my_schedule.html", title="Minha agenda")
+
+
+# @app.route("/register_specialist")
+# @login_required
+# def register_specialist():
+#     return render_template("register_specialist.html", title="Cadastrar especialista")

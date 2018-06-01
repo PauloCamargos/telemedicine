@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 from flask_wtf import FlaskForm
 from flask_login import current_user
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField, DateField, SelectField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField, DateField, SelectField, DateTimeField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, NumberRange, Optional, ValidationError
 from app.constants import *
 from app.models import User
+from app import db
 # Documentation http://wtforms.simplecodes.com/docs/0.6.1/fields.html
 # http://wtforms.readthedocs.io/en/latest/validators.html
 
@@ -85,3 +86,26 @@ class UpdateAccountForm(FlaskForm):
             user = User.query.filter_by(email=email.data).first()
             if user:
                 raise ValidationError('Este email já foi utilizado. Escolha outro.')
+
+# Getting the doctos list
+doctors = User.query.all()
+doctors_dict = {}
+for d in doctors:
+    doctors_dict[d.id] = d.fullname
+
+
+class CalendarForm(FlaskForm):
+
+    specialist = SelectField('Especialista', validators=[DataRequired()], choices=doctors_dict.items())
+    specialty = SelectField('Especialidade', validators=[DataRequired()], choices=specialties_dict.items())
+    shift_start = DateTimeField('Início do turno', validators=[DataRequired()], format="%d/%m/%Y %H:%M")
+    shift_end = DateTimeField('Fim do turno', validators=[DataRequired()], format="%d/%m/%Y %H:%M")
+    submit = SubmitField('Cadastrar escala')
+
+    # def __init__(self):
+        # doctors = User.query.all()
+        # doctors_dict = {}
+        # for d in doctors:
+        #     doctors_dict[d.id] = d.fullname
+    #
+    #     self.specialist = SelectField('Especialista', validators=[DataRequired()], choices=doctors_dict.items())

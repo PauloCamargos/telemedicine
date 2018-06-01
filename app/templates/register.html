@@ -1,4 +1,9 @@
+{% if current_user.specialties[0].specialty == 'Geral' %}
 {% extends "layout.html" %}
+{% else %}
+{% extends "layout_specialist.html" %}
+{% endif %}
+
 {% block content %}
 <h1 class="page-header">Cadastar colaborador</h1>
 <div class="panel panel-default">
