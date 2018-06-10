@@ -57,8 +57,8 @@ class User(db.Model, UserMixin):
     backref=db.backref('doctor', lazy='dynamic'))
 
     def __repr__(self):
-        return f"User('{self.id}','{self.crm}','{self.fullname}',\
-        '{self.specialties}')"
+        return f"User('{self.id}','{self.email}','{self.fullname}',\
+        '{self.specialties}', '{self.password}')"
 
 
 class Specialty(db.Model):
