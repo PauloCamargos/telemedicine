@@ -1,0 +1,21 @@
+{% if current_user.specialties[0].specialty == 'Geral' %}
+{% extends "layout.html" %}
+{% else %}
+{% extends "layout_specialist.html" %}
+{% endif %}
+{% block content %}
+
+<h1 class="page-header">Quadro de colaboradores</h1>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Colaboradores</h3>
+    </div>
+    <div class="panel-body">
+        {% for u in users %}
+        {{ u }} <br>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

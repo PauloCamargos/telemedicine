@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>TeleEspecialista</title>
+
+    <link href="{{   url_for('static', filename='bootstrap.min.css')  }}" rel="stylesheet">
+    <link href="{{   url_for('static', filename='cover.css')  }}" rel="stylesheet">
+    <link href="{{   url_for('static', filename='index-style-sheet.css')  }}" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="site-wrapper">
+
+    <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+            <div class="masthead clearfix">
+                <div class="inner">
+                    <h3 class="masthead-brand">TeleEspecialista</h3>
+                    <nav>
+                        <ul class="nav masthead-nav">
+                            <li class="active"><a href="{{ url_for('index') }}">Início</a></li>
+                            <li><a href="{{ url_for('login') }}">Login</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="inner cover">
+                <h1 class="cover-heading">Consulte um especialista</h1>
+                <p class="lead">Consulte um especialista de onde você estiver.</p>
+                <p class="lead">
+                    <a href="#" class="btn btn-lg btn-default">Saiba Mais</a>
+                </p>
+            </div>
+
+            <div class="mastfoot">
+                <div class="inner">
+                    <p>Universidade Federal de Uberlândia | <a href="https://paulocamargos.github.io/telemed/">TeleEspecialista</a></p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+<!-- <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script> -->
+<!-- <script src="js/bootstrap.min.js"></script> -->
+</body>
+</html>

@@ -1,0 +1,192 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h1 class="page-header">Minhas solicitações</h1>
+
+    <div class="container">
+        <div class="col-md-4"><i class="fas fa-circle" style="color:lightgreen;"></i> Pronto para chamada
+        </div>
+        <div class="col-md-4"><i class="fas fa-circle" style="color:red"></i> Rejeitada por timeout
+        </div>
+        <div class="col-md-4"> <i class="fas fa-circle" style="color:blue;"></i> Aguardando resposta
+        </div>
+    </div>
+    <br><br>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Solicitações</h3>
+        </div>
+        <div class="panel-body">
+<!--            INCIO SOLICITAÇÃO-->
+                    <div class="row">
+                        <div class="col-md-1 text-center">
+                            <h6>Status</h6>
+                            <i class="fas fa-circle" style="color:lightgreen;"></i>
+                        </div>
+
+<!--                        <div class="col-md-1 text-center">-->
+<!--                            <h6>Data Sol.</h6>-->
+<!--                            <p>10/08/2018</p>-->
+<!--                        </div>-->
+
+                        <div class="col-md-2 text-center">
+                            <h6>Data</h6>
+                            Agend.: 10/08/2018
+                            Solic.: 10/08/2018
+                        </div>
+
+                        <div class="col-md-1 text-center">
+                            <h6>Horário</h6>
+                            <p>20h50</p>
+                        </div>
+
+                        <div class="col-md-2 text-center">
+                            <h6>Especialidade</h6>
+                            <p>Nefrologia</p>
+                        </div>
+
+                        <div class="col-md-2 text-center">
+                            <h6>Paciente</h6>
+                            <p>Virgulino Pereira dos Santos</p>
+                        </div>
+
+                        <div class="col-md-2 text-center">
+                            <h6>Especialista</h6>
+                            <p>Maria dos Santos</p>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="btn-group btn-block">
+                                <button type="button" class="btn btn-primary dropdown-toggle btn-block" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Editar <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="call.php">Iniciar chamada</a></li>
+                                    <li><a href="#">Editar solicitação</a></li>
+                                    <li><a href="#">Cancelar solicitação</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+            <br><hr>
+            <!--            FIM SOLICITACAO-->
+
+
+            <!--            INCIO SOLICITAÇÃO-->
+            <div class="row">
+                <div class="col-md-1 text-center">
+                    <h6>Status</h6>
+                    <i class="fas fa-circle" style="color:red;"></i>
+                </div>
+
+<!--                <div class="col-md-1 text-center">-->
+<!--                    <h6>Data Sol.</h6>-->
+<!--                    <p>10/08/2018</p>-->
+<!--                </div>-->
+
+                <div class="col-md-2 text-center">
+                    <h6>Data</h6>
+                    Agend.: 10/08/2018
+                    Solic.: 10/08/2018
+                </div>
+
+                <div class="col-md-1 text-center">
+                    <h6>Horário</h6>
+                    <p>20h50</p>
+                </div>
+
+                <div class="col-md-2 text-center">
+                    <h6>Especialidade</h6>
+                    <p>Nefrologia</p>
+                </div>
+
+                <div class="col-md-2 text-center">
+                    <h6>Paciente</h6>
+                    <p>Virgulino Pereira dos Santos</p>
+                </div>
+
+                <div class="col-md-2 text-center">
+                    <h6>Especialista</h6>
+                    <p>Maria dos Santos</p>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="btn-group btn-block">
+                        <button type="button" class="btn btn-primary dropdown-toggle btn-block" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Editar <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="call.php">Iniciar chamada</a></li>
+                            <li><a href="#">Editar solicitação</a></li>
+                            <li><a href="#">Cancelar solicitação</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <br><hr>
+
+            <!--            FIM SOLICITACAO-->
+
+            <!--            INCIO SOLICITAÇÃO-->
+            <div class="row">
+                <div class="col-md-1 text-center">
+                    <h6>Status</h6>
+                    <i class="fas fa-circle" style="color:blue;"></i>
+                </div>
+
+<!--                <div class="col-md-1 text-center">-->
+<!--                    <h6>Data Sol.</h6>-->
+<!--                    <p>10/08/2018</p>-->
+<!--                </div>-->
+
+                <div class="col-md-2 text-center">
+                    <h6>Data</h6>
+                    Agend.: 10/08/2018
+                    Solic.: 10/08/2018
+                </div>
+
+                <div class="col-md-1 text-center">
+                    <h6>Horário</h6>
+                    <p>20h50</p>
+                </div>
+
+                <div class="col-md-2 text-center">
+                    <h6>Especialidade</h6>
+                    <p>Nefrologia</p>
+                </div>
+
+                <div class="col-md-2 text-center">
+                    <h6>Paciente</h6>
+                    <p>Virgulino Pereira dos Santos</p>
+                </div>
+
+                <div class="col-md-2 text-center">
+                    <h6>Especialista</h6>
+                    <p>Maria dos Santos</p>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="btn-group btn-block">
+                        <button type="button" class="btn btn-primary dropdown-toggle btn-block" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Editar <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="call.php">Iniciar chamada</a></li>
+                            <li><a href="#">Editar solicitação</a></li>
+                            <li><a href="#">Cancelar solicitação</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <br><hr>
+
+            <!--            FIM SOLICITACAO-->
+
+            <hr>
+{% endblock content %}
