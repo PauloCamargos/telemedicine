@@ -1,15 +1,13 @@
-{% extends "layout.html" %}
-{% block content %}
-    <link href="{{ url_for('static', filename='chat.css') }}" rel="stylesheet" type="text/css">
+{% extends "layout.html" %} {% block content %}
+<link href="{{ url_for('static', filename='chat.css') }}" rel="stylesheet" type="text/css">
 
-    <h1 class="page-header">Chamadas</h1>
-    <video autoplay></video>
-    <script src="https://raw.githubusercontent.com/PauloCamargos/telemed/master/html/js/webrtc.js"></script>
-    <!-- Chat menu -->
+<h1 class="page-header">Chamadas</h1>
+<video autoplay></video>
+<!-- Chat menu -->
 <div class="container">
     <div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="margin-left:10px;">
         <div class="col-xs-12 col-md-12">
-        	<div class="panel panel-default">
+            <div class="panel panel-default">
                 <div class="panel-heading top-bar">
                     <div class="col-md-8 col-xs-8">
                         <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> Chat - Miguel</h3>
@@ -23,8 +21,7 @@
                     <div class="row msg_container base_sent">
                         <div class="col-md-10 col-xs-10">
                             <div class="messages msg_sent">
-                                <p>that mongodb thing looks good, huh?
-                                tiny master db, and huge document store</p>
+                                <p>that mongodb thing looks good, huh? tiny master db, and huge document store</p>
                                 <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
                             </div>
                         </div>
@@ -38,8 +35,7 @@
                         </div>
                         <div class="col-md-10 col-xs-10">
                             <div class="messages msg_receive">
-                                <p>that mongodb thing looks good, huh?
-                                tiny master db, and huge document store</p>
+                                <p>that mongodb thing looks good, huh? tiny master db, and huge document store</p>
                                 <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
                             </div>
                         </div>
@@ -50,8 +46,7 @@
                         </div>
                         <div class="col-xs-10 col-md-10">
                             <div class="messages msg_receive">
-                                <p>that mongodb thing looks good, huh?
-                                tiny master db, and huge document store</p>
+                                <p>that mongodb thing looks good, huh? tiny master db, and huge document store</p>
                                 <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
                             </div>
                         </div>
@@ -59,8 +54,7 @@
                     <div class="row msg_container base_sent">
                         <div class="col-xs-10 col-md-10">
                             <div class="messages msg_sent">
-                                <p>that mongodb thing looks good, huh?
-                                tiny master db, and huge document store</p>
+                                <p>that mongodb thing looks good, huh? tiny master db, and huge document store</p>
                                 <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
                             </div>
                         </div>
@@ -74,8 +68,7 @@
                         </div>
                         <div class="col-xs-10 col-md-10">
                             <div class="messages msg_receive">
-                                <p>that mongodb thing looks good, huh?
-                                tiny master db, and huge document store</p>
+                                <p>that mongodb thing looks good, huh? tiny master db, and huge document store</p>
                                 <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
                             </div>
                         </div>
@@ -83,8 +76,7 @@
                     <div class="row msg_container base_sent">
                         <div class="col-md-10 col-xs-10 ">
                             <div class="messages msg_sent">
-                                <p>that mongodb thing looks good, huh?
-                                tiny master db, and huge document store</p>
+                                <p>that mongodb thing looks good, huh? tiny master db, and huge document store</p>
                                 <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
                             </div>
                         </div>
@@ -101,7 +93,7 @@
                         </span>
                     </div>
                 </div>
-    		</div>
+            </div>
         </div>
     </div>
 
@@ -119,5 +111,5 @@
         </ul>
     </div>
 </div>
-<script src="https://getbootstrap.com/docs/3.3/dist/js/bootstrap.min.js"></script>
+<script src="https://raw.githubusercontent.com/PauloCamargos/telemedicine/master/chat_app/static/chat.js"></script>
 {% endblock content %}
