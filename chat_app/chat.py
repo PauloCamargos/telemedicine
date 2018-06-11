@@ -14,6 +14,10 @@ def index():
 def call():
     return render_template("call.html")
 
+@app.route("/calendar")
+def calendar():
+    return render_template("calendar.html")
+
 @app.route("/contact")
 def contact():
     return "TODO"
