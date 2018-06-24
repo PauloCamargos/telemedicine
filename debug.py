@@ -4,4 +4,7 @@ sys.path.append('app');
 from app import app
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    #NOTE: Não é seguro esse host, coloquei so para usar meu computador para
+    #NOTE: hospedar o site temporariamente
+    #NOTE: TIRAR
+    app.run(debug=True, host='0.0.0.0')
