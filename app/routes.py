@@ -207,7 +207,7 @@ def staff():
 @login_required
 def new_scale():
     form = CalendarForm()
-    return render_template("new_scale.html", title="Cadastrar escala-TeleEspecialita", form=form)
+    return render_template("new_scale.html", title="Cadastrar escala-TeleEspecialista", form=form)
 
 
 @app.route("/my_calls")
