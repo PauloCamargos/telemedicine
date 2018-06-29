@@ -2,6 +2,7 @@ from app import db, bcrypt
 from app.models import User, Specialty, Calendar
 from app.constants import specialties_dict
 
+db.drop_all()
 db.create_all()
 
 # Criando registro para especialidades
@@ -12,7 +13,7 @@ db.session.commit()
 
 # Criando usuarios
 hashed_password = bcrypt.generate_password_hash('admin').decode('utf-8')
-
+'''
 paulo = User(email='paulo.camargos@hotmail.com',
              password=hashed_password, crm='1234',
              fullname='Paulo Camargos', rg='123',
@@ -45,6 +46,7 @@ neurologia.doctors.append(especialista)
 geral.doctors.append(generalista)
 
 db.session.commit()
+'''
 #image_file = url_for('static',
 # filename='profile_pics/' + current_user.image_file)
 italo_fernandes = User(email='italo@teleespecialista.com',
@@ -106,15 +108,15 @@ db.session.add(nathalia_rodrigues)
 db.session.commit()
 
 
+radiologia = Specialty.query.filter_by(specialty='Radiologia e Diagnóstico por Imagem').first()
+otorrinolaringologia = Specialty.query.filter_by(specialty='Otorrinolaringologia').first()
+neurocirurgia = Specialty.query.filter_by(specialty='Neurocirurgia').first()
+geral = Specialty.query.filter_by(specialty='Geral').first()
 
-
-
-
-
-
-
-
-
-
-
-..
+radiologia.doctors.append(italo_fernandes)
+otorrinolaringologia.doctors.append(paulo_camargos)
+radiologia.doctors.append(ana_claudia)
+neurocirurgia.doctors.append(lucas_lemos)
+geral.doctors.append(mariane_modesto)
+geral.doctors.append(nathalia_rodrigues)
+db.session.commit()
