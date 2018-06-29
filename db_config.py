@@ -45,36 +45,76 @@ neurologia.doctors.append(especialista)
 geral.doctors.append(generalista)
 
 db.session.commit()
+#image_file = url_for('static',
+# filename='profile_pics/' + current_user.image_file)
+italo_fernandes = User(email='italo@teleespecialista.com',
+                       password=hashed_password,
+                       image_file='italo_fernandes.jpeg',
+                       crm='10',
+                       fullname='Ítalo Fernandes',
+                       rg='00000010',
+                       cpf='00000000010',
+                       phone_1='990000010')
+paulo_camargos = User(email='paulo@teleespecialista.com',
+                       password=hashed_password,
+                       image_file='paulo_camargos.jpg',
+                       crm='11',
+                       fullname='Paulo Camargos',
+                       rg='00000011',
+                       cpf='00000000011',
+                       phone_1='990000011')
+ana_claudia = User(email='ana@teleespecialista.com',
+                       password=hashed_password,
+                       image_file='ana_claudia.jpg',
+                       crm='12',
+                       fullname='Ana Cláudia',
+                       rg='00000012',
+                       cpf='00000000012',
+                       phone_1='990000012')
+lucas_lemos = User(email='lucas@teleespecialista.com',
+                       password=hashed_password,
+                       image_file='lucas_lemos.jpg',
+                       crm='13',
+                       fullname='Lucas Lemos',
+                       rg='00000013',
+                       cpf='00000000013',
+                       phone_1='990000013')
+mariane_modesto = User(email='mariane@teleespecialista.com',
+                       password=hashed_password,
+                       image_file='mariane_modesto.jpg',
+                       crm='14',
+                       fullname='Mariane Modesto',
+                       rg='00000014',
+                       cpf='00000000014',
+                       phone_1='990000014')
+nathalia_rodrigues = User(email='nathalia@teleespecialista.com',
+                       password=hashed_password,
+                       image_file='nathalia_rodrigues.jpg',
+                       crm='15',
+                       fullname='Nathália Rodrigues',
+                       rg='00000015',
+                       cpf='00000000015',
+                       phone_1='990000015')
 
-apostolos = """Pedro , André, Zebedeu, João, Filipe, Bartolomeu, Tomé, Mateus, Tiago, Tadeu, Simão, Judas"""
-apostolos = [ apostolo.split()[0] for apostolo in apostolos.split(', ')]
-sobrenomes = """– Agostinho
-– Aguiar
-– Albuquerque
-– Alegria
-– Alencastro
-– Almada
-– Alves
-– Alvim
-– Amorim
-– Andrade
-– Antunes
-– Aparício
-– Apolinário
-– Araújo
-– Arruda
-– Assis
-– Assunção
-– Ávila
-– Azambuja"""
-sobrenomes = [sobrenome.split()[1] for sobrenome in sobrenomes.split('\n')]
-usuarios = []
-from random import randint
-for apostolo in apostolos:
-    u = User(email= apostolo.lower() + '@jesus.nazare',
-             password=hashed_password, crm='0002',
-             fullname=apostolo+sobrenomes[randint(0,len(sobrenomes)-1)], rg='002',
-             cpf='002', phone_1='0000002', cep='312321')
-    usuarios.append(u)
-    db.session.add(u)
+db.session.add(italo_fernandes)
+db.session.add(paulo_camargos)
+db.session.add(ana_claudia)
+db.session.add(lucas_lemos)
+db.session.add(mariane_modesto)
+db.session.add(nathalia_rodrigues)
+
 db.session.commit()
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
