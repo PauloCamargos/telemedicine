@@ -16,24 +16,25 @@
             {% for u in users %}
             <div class="col-sm-6 col-md-4">
                 <!-- depois passo isso pro styles.css -->
+                <div class="thumbnail">
+
                 <center>
                 <img
                 src="{{ url_for('static', filename='profilePics/' + u.image_file) }}"
                 alt="User Picture"
                 height= "250px"
                 width= "250px"
-                style="border-radius:5%">
+                style="border-radius:1%">
                 </center>
                 <!-- depois passo isso pro styles.css -->
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>{{ u.fullname }}</h3>
-                        {% if u.specialties[0].specialty == 'Geral' %}
-                        <p>Generalista</p>
-                        {% else %}
-                        <p>Especialista em {{ u.specialties[0].specialty }}</p>
-                        {% endif %}
-                    </div>
+                <div class="caption">
+                    <h3>{{ u.fullname }}</h3>
+                    {% if u.specialties[0].specialty == 'Geral' %}
+                    <p>Generalista</p>
+                    {% else %}
+                    <p>{{ u.specialties[0].specialty }}</p>
+                    {% endif %}
+                </div>
                 </div>
             </div>
             {% endfor %}
