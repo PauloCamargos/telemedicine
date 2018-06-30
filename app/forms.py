@@ -73,17 +73,22 @@ class SearchSpecialistForm(FlaskForm):
     solicitar_consulta_submits = []
 
     def populate_select_specialities(self):
-        self.select_specialities.choices = [(0,'Todas as especialidades')]
+        choices = [(0,'Todas as especialidades')]
         specialties = []
         for u in User.query.all():
             s = Specialty.query.with_parent(u)[0]
             if not s.specialty in specialties and s.specialty != 'Geral':
                 specialties.append(s.specialty)
-                self.select_specialities.choices.append((s.id, s.specialty))
+                choices.append((s.id, s.specialty))
+        self.select_specialities.choices = choices
 
-    def populate_menuzinhos(self):
+    def populate_menuzinhos(self, s):
         self.solicitar_consulta_submits = []
-        users_found = User.query.all()
+        if s == 0 or s == '0':
+            users_found = User.query.all()
+        else:
+            users_found = User.query.with_parent(Specialty.query.filter_by(id=s)[0])
+
         for u in users_found:
             if u.specialties[0].specialty != 'Geral':
                 menuzinho_submit = MenuzinhoSubmit()
@@ -91,10 +96,6 @@ class SearchSpecialistForm(FlaskForm):
                 menuzinho_submit.submit.id = ("submit_consulta_%d"%(u.id))
                 menuzinho_submit.submit.description = ("Requisitar consulta com %s" % u.fullname)
                 self.solicitar_consulta_submits.append(menuzinho_submit)
-                #solicitar_submit = SubmitField('Solicitar Consulta',
-                #                              id=("submit_consulta_%d"%(u.id)),
-                #                              description=("Requisitar consulta com %s" % u.fullname))
-                #self.solicitar_consulta_submits.append((u, solicitar_submit))
 
 
 class UpdateAccountForm(FlaskForm):

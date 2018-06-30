@@ -93,9 +93,13 @@ def account():
 def search_specialist():
     form = SearchSpecialistForm()
     form.populate_select_specialities()
-    form.populate_menuzinhos()
-    # todas as especialidades: specialties_dict.values(),
-    # somentes as com usuarios: specialties
+    form.populate_menuzinhos(0)
+    if request.method == 'POST':
+        print("#"*50)
+        print(form.select_specialities.data)
+        print("#"*50)
+        form.populate_menuzinhos(form.select_specialities.data)
+
     return render_template("search_specialist.html",
     title="Buscar - TeleEspecialista",
     form=form)
