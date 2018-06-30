@@ -54,7 +54,7 @@ class User(db.Model, UserMixin):
     phone_1 = db.Column(db.String(16), nullable=False)
     phone_2 = db.Column(db.String(16))
     #is_available = db.Column(db.Boolean, default=False)
-    # Foreign Keys
+    # Foreign keys
     # clinics = db.relationship('Clinic', secondary=joinClinicUser,
     # backref=db.backref('employees', lazy='dynamic'))
     # appointments = db.relationship('Appointment', backref='specialist',
