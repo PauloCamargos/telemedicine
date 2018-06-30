@@ -53,6 +53,7 @@ class User(db.Model, UserMixin):
     state = db.Column(db.String(2))
     phone_1 = db.Column(db.String(16), nullable=False)
     phone_2 = db.Column(db.String(16))
+    #is_available = db.Column(db.Boolean, default=False)
     # Foreign Keys
     # clinics = db.relationship('Clinic', secondary=joinClinicUser,
     # backref=db.backref('employees', lazy='dynamic'))

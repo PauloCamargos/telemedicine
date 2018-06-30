@@ -222,6 +222,16 @@ def new_scale():
 def my_calls():
     return render_template("my_calls.html", title="Meus chamados")
 
+@app.route("/nova_consulta")
+@login_required
+def nova_consulta():
+    return render_template("my_calls.html", title="Meus chamados")
+
+@app.route("/agendar_agora")
+@login_required
+def agendar_agora():
+    return render_template("my_calls.html", title="Meus chamados")
+
 
 @app.route("/my_schedule")
 @login_required
