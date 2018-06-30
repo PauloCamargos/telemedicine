@@ -95,9 +95,6 @@ def search_specialist():
     form.populate_select_specialities()
     form.populate_menuzinhos(0)
     if request.method == 'POST':
-        print("#"*50)
-        print(form.select_specialities.data)
-        print("#"*50)
         form.populate_menuzinhos(form.select_specialities.data)
 
     return render_template("search_specialist.html",

@@ -1,5 +1,5 @@
 from app import db, bcrypt
-from app.models import User, Specialty, Calendar
+from app.models import User, Specialty, Calendar, Consulta
 from app.constants import specialties_dict
 
 #from app.models import joinsSpecialtyUser
@@ -121,4 +121,13 @@ radiologia.doctors.append(ana_claudia)
 neurocirurgia.doctors.append(lucas_lemos)
 geral.doctors.append(mariane_modesto)
 geral.doctors.append(nathalia_rodrigues)
+db.session.commit()
+
+nathalia_italo = Consulta(nome_paciente="Giovana Orlovski Nogueira")
+mariane_paulo = Consulta(nome_paciente="Catarina dos Santos Gomes")
+nathalia_rodrigues.consultas.append(nathalia_italo)
+italo_fernandes.consultas.append(nathalia_italo)
+
+mariane_modesto.consultas.append(mariane_paulo)
+paulo_camargos.consultas.append(mariane_paulo)
 db.session.commit()

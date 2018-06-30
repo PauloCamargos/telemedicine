@@ -1,5 +1,6 @@
 from app import db, login_manager
 from flask_login import UserMixin
+import datetime
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -23,6 +24,12 @@ joinCalendarUser = db.Table(
     'joinCalendarUser',
     db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
     db.Column('calendar_id', db.Integer, db.ForeignKey('calendar.id'))
+)
+
+joinConsultaUser = db.Table(
+    'joinConsultaUser',
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
+    db.Column('consulta_id', db.Integer, db.ForeignKey('consulta.id'))
 )
 
 class User(db.Model, UserMixin):
@@ -53,6 +60,10 @@ class User(db.Model, UserMixin):
     #lazy=True)
     specialties = db.relationship('Specialty', secondary=joinsSpecialtyUser,
     backref=db.backref('doctors', lazy='dynamic'))
+
+    consultas = db.relationship('Consulta', secondary=joinConsultaUser,
+    backref=db.backref('doctors', lazy='dynamic'))
+
     shifts = db.relationship('Calendar', secondary=joinCalendarUser,
     backref=db.backref('doctor', lazy='dynamic'))
 
@@ -87,6 +98,20 @@ class Calendar(db.Model):
     specialty_id = db.Column(db.Integer, db.ForeignKey('specialty.id'))
 
 
+class Consulta(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    data_solicitacao = db.Column(db.DateTime, default=datetime.datetime.now)
+    data_agendada = db.Column(db.DateTime, default=datetime.datetime.now)
+    nome_paciente = db.Column(db.String(256))
+    status = db.Column(db.String(256), default="Aguardando") # Aguardando, Confirmada, Cancelada
+
+    def get_other_doctor(self, user_eu):
+        return self.doctors.filter(User.id!=user_eu.id)[0]
+
+#    def __repr__(self):
+#        return f"Conulta('{self.id}','{self.doctos}','{self.nome_paciente}')"
+
+##########################################
 # class Appointment(db.Model):
 #     id = db.Column(db.Integer, primary_key=True)
 #     # format crm: 0000000000000/MG
