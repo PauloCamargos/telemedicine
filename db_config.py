@@ -2,6 +2,8 @@ from app import db, bcrypt
 from app.models import User, Specialty, Calendar
 from app.constants import specialties_dict
 
+#from app.models import joinsSpecialtyUser
+
 db.drop_all()
 db.create_all()
 

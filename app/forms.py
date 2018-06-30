@@ -4,7 +4,7 @@ from flask_login import current_user
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField, DateField, SelectField, DateTimeField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, NumberRange, Optional, ValidationError
 from app.constants import *
-from app.models import User
+from app.models import User, Specialty
 from app import db
 # Documentation http://wtforms.simplecodes.com/docs/0.6.1/fields.html
 # http://wtforms.readthedocs.io/en/latest/validators.html
@@ -62,6 +62,39 @@ class LoginForm(FlaskForm):
     password = PasswordField('Senha', validators=[DataRequired()])
     remember_me = BooleanField('Salvar informações')
     submit = SubmitField('Entrar')
+
+class MenuzinhoSubmit(FlaskForm):
+    user = None
+    submit = SubmitField("Solicitar Consulta")
+
+class SearchSpecialistForm(FlaskForm):
+    select_specialities = SelectField('Especialidade', choices=[], id="select_specialities")
+    search_submit = SubmitField('Pesquisar')
+    solicitar_consulta_submits = []
+
+    def populate_select_specialities(self):
+        self.select_specialities.choices = [(0,'Todas as especialidades')]
+        specialties = []
+        for u in User.query.all():
+            s = Specialty.query.with_parent(u)[0]
+            if not s.specialty in specialties and s.specialty != 'Geral':
+                specialties.append(s.specialty)
+                self.select_specialities.choices.append((s.id, s.specialty))
+
+    def populate_menuzinhos(self):
+        self.solicitar_consulta_submits = []
+        users_found = User.query.all()
+        for u in users_found:
+            if u.specialties[0].specialty != 'Geral':
+                menuzinho_submit = MenuzinhoSubmit()
+                menuzinho_submit.user = u
+                menuzinho_submit.submit.id = ("submit_consulta_%d"%(u.id))
+                menuzinho_submit.submit.description = ("Requisitar consulta com %s" % u.fullname)
+                self.solicitar_consulta_submits.append(menuzinho_submit)
+                #solicitar_submit = SubmitField('Solicitar Consulta',
+                #                              id=("submit_consulta_%d"%(u.id)),
+                #                              description=("Requisitar consulta com %s" % u.fullname))
+                #self.solicitar_consulta_submits.append((u, solicitar_submit))
 
 
 class UpdateAccountForm(FlaskForm):

@@ -1,9 +1,10 @@
 from flask import render_template, redirect, url_for, flash, request
 from app import app, db, bcrypt
-from app.forms import DoctorRegistrationForm, LoginForm, UpdateAccountForm, CalendarForm
+from app.forms import SearchSpecialistForm, DoctorRegistrationForm, LoginForm, UpdateAccountForm, CalendarForm
 from app.models import User, Specialty, Calendar
 from app.constants import *
 from flask_login import login_user, current_user, logout_user, login_required
+from wtforms import SubmitField
 
 @app.route("/")
 @app.route("/index")
@@ -87,12 +88,17 @@ def account():
     return render_template("account.html", title="Atualizar informações - TeleEspecialista", form=form)
 
 
-@app.route("/search_specialist")
+@app.route("/search_specialist", methods=['GET', 'POST'])
 @login_required
 def search_specialist():
+    form = SearchSpecialistForm()
+    form.populate_select_specialities()
+    form.populate_menuzinhos()
+    # todas as especialidades: specialties_dict.values(),
+    # somentes as com usuarios: specialties
     return render_template("search_specialist.html",
-    title="Buscar - TeleEspecialista", specialties=specialties_dict.values(),
-    image_file="static/profilePics/default.jpeg")
+    title="Buscar - TeleEspecialista",
+    form=form)
 
 
 @app.route("/check_requests")
