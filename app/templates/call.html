@@ -1,0 +1,66 @@
+{% if current_user.specialties[0].specialty == 'Geral' %}
+{% extends "layout.html" %}
+{% else %}
+{% extends "layout_specialist.html" %}
+{% endif %}
+
+{% block content %}
+<h1 class="page-header">Chamada de vídeo</h1>
+
+<!--  CODIGO PARA TRANSMISSAO DE VIDEO -->
+<!-- {% if status=="iniciar" %} -->
+<!-- <video id="localVideo" autoplay playsinline></video>
+<video id="remoteVideo" autoplay playsinline></video>
+
+<div>
+  <button id="startButton">Start</button>
+  <button id="callButton">Call</button>
+  <button id="hangupButton">Hang Up</button>
+</div> -->
+
+
+<!-- <div class="row">
+
+<div class="col-md-4">
+  <a href="{{ url_for("end_call") }}" role="button" class="btn btn-success btn-lg">Inicar chamada</a>
+</div>
+<div class="col-md-4">
+  <a href="{{ url_for("end_call") }}" role="button" class="btn btn-success btn-lg">Ligar</a>
+</div>
+<div class="col-md-4">
+  <a href="{{ url_for("end_call") }}" role="button" class="btn btn-success btn-lg">Desligar chamada</a>
+</div>
+
+</div> -->
+<!-- {% endif %} -->
+
+<!-- =======================================================================  -->
+<!-- =======================================================================  -->
+
+<!-- CODIGO PARA TRANSMISSAO DE TEXTO -->
+
+<textarea id="dataChannelSend" disabled
+    placeholder="Press Start, enter some text, then press Send."></textarea>
+  <textarea id="dataChannelReceive" disabled></textarea>
+
+  <div id="buttons">
+    <button id="startButton">Start</button>
+    <button id="sendButton">Send</button>
+    <button id="closeButton">Stop</button>
+  </div>
+
+  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  <script src="js/main.js"></script>
+
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+
+<!--Use o de baixo para video entre dois computadores -->
+<!-- <script src="{{ url_for("static", filename="js/webrtc_peer.js")}}"></script> -->
+
+<!-- Use o de baixo para um video local somente  -->
+<!-- <script src="{{ url_for("static", filename="js/webrtc.js")}}"></script> -->
+
+<!--  Use o de baixo para transmissao de texto entre dois pc's-->
+<script src="{{ url_for("static", filename="js/webrtc_text.js")}}"></script>
+
+{% endblock content %}

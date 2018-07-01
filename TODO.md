@@ -12,3 +12,4 @@ status
 1. Em 'Colaboradores', colocar a especialidade ao lado do nome
 1. Implementar agendar consulta
 1. Implementar todos os link do botão 'Editar' em 'Próximas consultas'
+1. Atualizar README.md

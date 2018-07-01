@@ -14,20 +14,29 @@
 	`$ . activate`
 
 1. When active, install these modules:
-    - Flask (http://flask.pocoo.org/)
+    - [Flask](http://flask.pocoo.org/)
+
     	`$ pip install Flask`
-    - WTForms (https://flask-wtf.readthedocs.io/en/stable/)
+
+    - [WTForms](https://flask-wtf.readthedocs.io/en/stable/)
+
     	`$ pip install flask-wtf`
-    - SQLAlchemy (https://docs.sqlalchemy.org/en/latest/)
+
+    - [SQLAlchemy](https://docs.sqlalchemy.org/en/latest/)
+
     	`$ pip install flask-sqlalchemy`
-    - Secrets (https://docs.python.org/3/library/secrets.html)
-    	`$ pip install secrets`
-    - Flask-login (https://flask-login.readthedocs.io/en/latest/)
+
+    - [Flask-login](https://flask-login.readthedocs.io/en/latest/)
+
     	`$ pip install flask-login`
-    - Bcrypt (https://pypi.org/project/bcrypt/)
+
+    - [Bcrypt](https://pypi.org/project/bcrypt/)
+
     	`$ pip install flask-bcrypt`
-    - Psycopg2
-        $ pip install psycopg2 (http://initd.org/psycopg/)
+
+    - [Psycopg2](http://initd.org/psycopg/)
+
+        `$ pip install psycopg2-binary`
 
 1. Start coding!
 
