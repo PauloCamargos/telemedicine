@@ -63,14 +63,13 @@ class LoginForm(FlaskForm):
     remember_me = BooleanField('Salvar informações')
     submit = SubmitField('Entrar')
 
-class MenuzinhoSubmit(FlaskForm):
-    user = None
-    submit = SubmitField("Solicitar Consulta")
+class NovaConsultaForm(FlaskForm):
+    dt = DateField('DatePicker', format='%Y-%m-%d')
 
 class SearchSpecialistForm(FlaskForm):
     select_specialities = SelectField('Especialidade', choices=[], id="select_specialities")
     search_submit = SubmitField('Pesquisar')
-    solicitar_consulta_submits = []
+    users_found = []
 
     def populate_select_specialities(self):
         choices = [(0,'Todas as especialidades')]
@@ -83,7 +82,7 @@ class SearchSpecialistForm(FlaskForm):
         self.select_specialities.choices = choices
 
     def populate_menuzinhos(self, s):
-        self.solicitar_consulta_submits = []
+        self.users_found = []
         if s == 0 or s == '0':
             users_found = User.query.all()
         else:
@@ -91,11 +90,7 @@ class SearchSpecialistForm(FlaskForm):
 
         for u in users_found:
             if u.specialties[0].specialty != 'Geral':
-                menuzinho_submit = MenuzinhoSubmit()
-                menuzinho_submit.user = u
-                menuzinho_submit.submit.id = ("submit_consulta_%d"%(u.id))
-                menuzinho_submit.submit.description = ("Requisitar consulta com %s" % u.fullname)
-                self.solicitar_consulta_submits.append(menuzinho_submit)
+                self.users_found.append(u)
 
 
 class UpdateAccountForm(FlaskForm):

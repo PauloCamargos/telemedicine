@@ -29,22 +29,22 @@
     </div>
     <div class="panel-body">
         <div class="row">
-            {% for s in form.solicitar_consulta_submits %}
+            {% for user in form.users_found %}
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
                     <center>
-                    <img src="{{ url_for('static', filename='profilePics/' + s.user.image_file) }}"
+                    <img src="{{ url_for('static', filename='profilePics/' + user.image_file) }}"
                     alt="User Picture"
                     height= "200px"
                     style="border-radius:1%">
                     </center>
                     <div class="caption">
-                        <h3>{{ s.user.fullname }}</h3>
-                        <p>{{ s.user.specialties[0].specialty }}</p>
+                        <h3>{{ user.fullname }}</h3>
+                        <p>{{ user.specialties[0].specialty }}</p>
                         {% if True %}
-                        <p> <a href="{{url_for('agendar_agora', user_id = s.user.id)}}" class="btn btn-success btn-block" role="button">Solicitar Agora</a></p>
+                        <p> <a href="{{url_for('agendar_agora', user_id = user.id)}}" class="btn btn-success btn-block" role="button">Solicitar Agora</a></p>
                         {% endif %}
-                        <p> <a href="{{url_for('nova_consulta', user_id = s.user.id)}}" class="btn btn-primary btn-block" role="button">Agendar Consulta</a></p>
+                        <p> <a href="{{url_for('nova_consulta', user_id = user.id)}}" class="btn btn-primary btn-block" role="button">Agendar Consulta</a></p>
                     </div>
                 </div>
             </div>

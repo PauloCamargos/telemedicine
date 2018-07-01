@@ -225,6 +225,9 @@ def my_calls():
 @app.route("/nova_consulta")
 @login_required
 def nova_consulta():
+    user_id = request.args['user_id']  # counterpart for url_for(
+    user_request = User.query.filter_by(id=user_id)[0]
+    form = NovaConsultaForm()
     return render_template("my_calls.html", title="Meus chamados")
 
 @app.route("/agendar_agora")
