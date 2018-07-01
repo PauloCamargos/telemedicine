@@ -1,0 +1,100 @@
+{% extends "layout_specialist.html" %}
+{% block content %}
+<h1 class="page-header">Cadastar colaborador</h1>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Preencha o formulário</h3>
+    </div>
+    <div class="panel-body">
+        <form method="post" action="">
+            {{ form.hidden_tag() }}
+            <p class="text-right">
+                <small>(*) Informações obrigatórias.</small>
+            </p>
+
+            <fieldset>
+                <legend><h4>Novo calendário</h4></legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong>*</strong> {{ form.specialist.label(class="form-control-label") }}
+                            {% if form.specialist.errors %}
+                            <div class="has-error">
+                                {{ form.specialist(class="form-control has-error")}}
+                                {% for error in form.specialist.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.specialist(class="form-control")}}
+                            {% endif %}
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong>*</strong> {{ form.specialty.label(class="form-control-label") }}
+                            {% if form.specialty.errors %}
+                            <div class="has-error">
+                                {{ form.specialty(class="form-control has-error")}}
+                                {% for error in form.specialty.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.specialty(class="form-control")}}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong>*</strong> {{ form.shift_start.label(class="form-control-label") }}
+                            {% if form.shift_start.errors %}
+                            <div class="has-error">
+                                {{ form.shift_start(class="form-control has-error")}}
+                                {% for error in form.shift_start.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.shift_start(class="form-control")}}
+                            {% endif %}
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong>*</strong> {{ form.shift_end.label(class="form-control-label") }}
+                            {% if form.shift_end.errors %}
+                            <div class="has-error">
+                                {{ form.shift_end(class="form-control has-error")}}
+                                {% for error in form.shift_end.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.shift_end(class="form-control")}}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+            </fieldset>
+            <!--FIM INFO PESSOAIS-->
+            <br>
+
+            <br><br>
+            <div class="form-group">
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-primary btn-block") }}
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

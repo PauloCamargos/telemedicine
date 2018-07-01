@@ -7,16 +7,19 @@
         <h3 class="panel-title">Selecionar uma especialidade</h3>
     </div>
     <div class="panel-body">
-
+        <form method="post" action="">
         <div class="form-group">
-            <label for="sel1">Selecione um especialista</label>
-            <select class="form-control" id="selectSpecialy" name="selectSpecialty" onchange="this.form.submit()">
-                <option value="0">Selecione uma especialidade...</option>
-                {% for speciality in specialties %}
-                <option value="{{ speciality }}">{{ speciality }}</option>
-                {% endfor %}
-            </select>
+            <div class="rol">
+                <label for="sel1">Selecione um especialista</label>
+            </div>
+            <div class="col-md-10">
+            {{ form.select_specialities(class="form-control") }}
+            </div>
+            <div class="col-md-2">
+            {{ form.search_submit(class="btn btn-info btn-block") }}
+            </div>
         </div>
+        </form>
     </div>
 </div>
 
@@ -26,41 +29,27 @@
     </div>
     <div class="panel-body">
         <div class="row">
-            <div class="col-sm-6 col-md-4">
-                 <div class="thumbnail">
-                    <img src="{{ image_file }}" alt="User Picture">
-                    <div class="caption">
-                        <h3>João da Silva</h3>
-                        <p>Especialista em neurologia</p>
-                        <p> <a href="#" class="btn btn-success btn-block" role="button">Solicitar consulta</a></p>
-                    </div>
-                </div>
-            </div>
-
+            {% for user in form.users_found %}
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
-                    <img src="{{ image_file }}" alt="User Picture">
+                    <center>
+                    <img src="{{ url_for('static', filename='profilePics/' + user.image_file) }}"
+                    alt="User Picture"
+                    height= "200px"
+                    style="border-radius:1%">
+                    </center>
                     <div class="caption">
-                        <h3>José Souza</h3>
-                        <p>Especialista em neurologia/cirurgia</p>
-                        <p> <a href="#" class="btn btn-success btn-block" role="button">Solicitar consulta</a></p>
+                        <h3>{{ user.fullname }}</h3>
+                        <p>{{ user.specialties[0].specialty }}</p>
+                        {% if True %}
+                        <p> <a href="{{url_for('agendar_agora', user_id = user.id)}}" class="btn btn-success btn-block" role="button">Solicitar Agora</a></p>
+                        {% endif %}
+                        <p> <a href="{{url_for('nova_consulta', user_id = user.id)}}" class="btn btn-primary btn-block" role="button">Agendar Consulta</a></p>
                     </div>
                 </div>
             </div>
-
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="{{ image_file }}" alt="User Picture">
-                    <div class="caption">
-                        <h3>Maria dos Santos</h3>
-                        <p>Especialista em neurologia</p>
-                        <p> <a href="#" class="btn btn-success btn-block" role="button">Solicitar consulta</a></p>
-                    </div>
-                </div>
-            </div>
-
+            {% endfor %}
         </div>
     </div>
 </div>
-
 {% endblock %}

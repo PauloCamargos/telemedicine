@@ -4,7 +4,7 @@ from flask_login import current_user
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField, DateField, SelectField, DateTimeField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, NumberRange, Optional, ValidationError
 from app.constants import *
-from app.models import User
+from app.models import User, Specialty
 from app import db
 # Documentation http://wtforms.simplecodes.com/docs/0.6.1/fields.html
 # http://wtforms.readthedocs.io/en/latest/validators.html
@@ -62,6 +62,35 @@ class LoginForm(FlaskForm):
     password = PasswordField('Senha', validators=[DataRequired()])
     remember_me = BooleanField('Salvar informações')
     submit = SubmitField('Entrar')
+
+class NovaConsultaForm(FlaskForm):
+    dt = DateField('DatePicker', format='%Y-%m-%d')
+
+class SearchSpecialistForm(FlaskForm):
+    select_specialities = SelectField('Especialidade', choices=[], id="select_specialities")
+    search_submit = SubmitField('Pesquisar')
+    users_found = []
+
+    def populate_select_specialities(self):
+        choices = [(0,'Todas as especialidades')]
+        specialties = []
+        for u in User.query.all():
+            s = Specialty.query.with_parent(u)[0]
+            if not s.specialty in specialties and s.specialty != 'Geral':
+                specialties.append(s.specialty)
+                choices.append((s.id, s.specialty))
+        self.select_specialities.choices = choices
+
+    def populate_menuzinhos(self, s):
+        self.users_found = []
+        if s == 0 or s == '0':
+            users_found = User.query.all()
+        else:
+            users_found = User.query.with_parent(Specialty.query.filter_by(id=s)[0])
+
+        for u in users_found:
+            if u.specialties[0].specialty != 'Geral':
+                self.users_found.append(u)
 
 
 class UpdateAccountForm(FlaskForm):

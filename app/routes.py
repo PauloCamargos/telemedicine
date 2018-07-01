@@ -1,9 +1,10 @@
 from flask import render_template, redirect, url_for, flash, request
 from app import app, db, bcrypt
-from app.forms import DoctorRegistrationForm, LoginForm, UpdateAccountForm, CalendarForm
-from app.models import User, Specialty, Calendar
+from app.forms import SearchSpecialistForm, DoctorRegistrationForm, LoginForm, UpdateAccountForm, CalendarForm
+from app.models import User, Specialty, Calendar, Consulta
 from app.constants import *
 from flask_login import login_user, current_user, logout_user, login_required
+from wtforms import SubmitField
 
 @app.route("/")
 @app.route("/index")
@@ -87,12 +88,18 @@ def account():
     return render_template("account.html", title="Atualizar informações - TeleEspecialista", form=form)
 
 
-@app.route("/search_specialist")
+@app.route("/search_specialist", methods=['GET', 'POST'])
 @login_required
 def search_specialist():
+    form = SearchSpecialistForm()
+    form.populate_select_specialities()
+    form.populate_menuzinhos(0)
+    if request.method == 'POST':
+        form.populate_menuzinhos(form.select_specialities.data)
+
     return render_template("search_specialist.html",
-    title="Buscar - TeleEspecialista", specialties=specialties_dict.values(),
-    image_file="static/profilePics/default.jpeg")
+    title="Buscar - TeleEspecialista",
+    form=form)
 
 
 @app.route("/check_requests")
@@ -207,13 +214,32 @@ def staff():
 @login_required
 def new_scale():
     form = CalendarForm()
-    return render_template("new_scale.html", title="Cadastrar escala-TeleEspecialita", form=form)
+    return render_template("new_scale.html", title="Cadastrar escala-TeleEspecialista", form=form)
 
 
 @app.route("/my_calls")
 @login_required
 def my_calls():
     return render_template("my_calls.html", title="Meus chamados")
+
+@app.route("/nova_consulta")
+@login_required
+def nova_consulta():
+    user_id = request.args['user_id']  # counterpart for url_for(
+    user_request = User.query.filter_by(id=user_id)[0]
+    form = NovaConsultaForm()
+    return render_template("my_calls.html", title="Meus chamados")
+
+@app.route("/agendar_agora")
+@login_required
+def agendar_agora():
+    consulta = Consulta(nome_paciente="Não informado")
+    user_id = request.args['user_id']  # counterpart for url_for(
+    user_request = User.query.filter_by(id=user_id)[0]
+    current_user.consultas.append(consulta)
+    user_request.consultas.append(consulta)
+    db.session.commit()
+    return redirect(url_for('home'))
 
 
 @app.route("/my_schedule")

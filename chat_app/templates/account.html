@@ -1,0 +1,275 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1 class="page-header">Minha conta</h1>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Informações atuais</h3>
+    </div>
+    <div class="panel-body">
+
+        <form method="post" action="">
+            {{ form.hidden_tag() }}
+            <p class="text-right">
+                <small>(*) Informações obrigatórias.</small>
+            </p>
+
+            <fieldset>
+                <legend><h4>Informações pessoais</h4></legend>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <strong>*</strong> {{ form.email.label(class="form-control-label") }}
+
+                            {% if form.email.errors %}
+                            <div class="has-error">
+                                {{ form.email(class="form-control has-error")}}
+                                {% for error in form.email.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.email(class="form-control readonly")}}
+                            {% endif %}
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <strong>*</strong> {{ form.password.label(class="form-control-label") }}
+                            {% if form.password.errors %}
+                            <div class="has-error">
+                                {{ form.password(class="form-control has-error")}}
+                                {% for error in form.password.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.password(class="form-control")}}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <strong>*</strong> {{ form.confirm_password.label(class="form-control-label") }}
+                            {% if form.confirm_password.errors %}
+                            <div class="has-error">
+                                {{ form.confirm_password(class="form-control has-error")}}
+                                {% for error in form.confirm_password.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.confirm_password(class="form-control")}}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="form-control-label">CRM</label>
+                            <p class="form-control-static">{{ current_user.crm }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-control-label">Nome</label>
+                            <p class="form-control-static">{{ current_user.fullname }}</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="form-control-label">Data de nascimento</label>
+                            <p class="form-control-static">{{ current_user.birthdate }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="form-control-label">Cidade de nascimento</label>
+                            <p class="form-control-static">{{ current_user.birthcity }}</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="form-control-label">Estado de nascimento</label>
+                            <p class="form-control-static">{{ current_user.birthstate }}</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="form-group">
+                            <label class="form-control-label">RG</label>
+
+                            <p class="form-control-static">{{ current_user.rg }}</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="form-group">
+                            <label class="form-control-label">CPF</label>
+                            <p class="form-control-static">{{ current_user.cpf }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            {{ form.cep.label(class="form-control-label") }}
+                            {% if form.cep.errors %}
+                            <div class="has-error">
+                                {{ form.cep(class="form-control has-error")}}
+                                {% for error in form.cep.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.cep(class="form-control")}}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            {{ form.place.label(class="form-control-label") }}
+                            {% if form.place.errors %}
+                            <div class="has-error">
+                                {{ form.place(class="form-control has-error")}}
+                                {% for error in form.place.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.place(class="form-control")}}
+                            {% endif %}
+                        </select></div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.residence_address.label(class="form-control-label") }}
+                            {% if form.residence_address.errors %}
+                            <div class="has-error">
+                                {{ form.residence_address(class="form-control has-error")}}
+                                {% for error in form.residence_address.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.residence_address(class="form-control")}}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            {{ form.neighborhood.label(class="form-control-label") }}
+                            {% if form.neighborhood.errors %}
+                            <div class="has-error">
+                                {{ form.neighborhood(class="form-control has-error")}}
+                                {% for error in form.neighborhood.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.neighborhood(class="form-control")}}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.city.label(class="form-control-label") }}
+                            {% if form.city.errors %}
+                            <div class="has-error">
+                                {{ form.city(class="form-control has-error")}}
+                                {% for error in form.city.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.city(class="form-control")}}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            {{ form.state.label(class="form-control-label") }}
+                            {% if form.state.errors %}
+                            <div class="has-error">
+                                {{ form.state(class="form-control has-error")}}
+                                {% for error in form.state.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.state(class="form-control")}}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <strong>*</strong> {{ form.phone_1.label(class="form-control-label") }}
+                            {% if form.phone_1.errors %}
+                            <div class="has-error">
+                                {{ form.phone_1(class="form-control has-error")}}
+                                {% for error in form.phone_1.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.phone_1(class="form-control")}}
+                            {% endif %}
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            {{ form.phone_2.label(class="form-control-label") }}
+                            {% if form.phone_2.errors %}
+                            <div class="has-error">
+                                {{ form.phone_2(class="form-control has-error")}}
+                                {% for error in form.phone_2.errors %}
+                                <strong class="help-block">{{ error }}</strong>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.phone_2(class="form-control")}}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-control-label">Especialidade</label>
+                        <p class="form-control-static">{{ current_user.specialties[0].specialty }}</p>
+                    </div>
+                </div>
+
+            </fieldset>
+            <!--FIM INFO PESSOAIS-->
+            <br>
+
+            <br><br>
+            <div class="form-group">
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-primary btn-block") }}
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
