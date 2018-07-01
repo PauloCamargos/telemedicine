@@ -1,0 +1,10 @@
+{% if current_user.specialties[0].specialty == 'Geral' %}
+{% extends "layout.html" %}
+{% else %}
+{% extends "layout_specialist.html" %}
+{% endif %}
+
+{% block content %}
+<h1 class="page-header">Olá, {{ current_user.fullname.split(' ', 1)[0] }}!</h1>
+
+{% endblock content %}

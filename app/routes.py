@@ -218,7 +218,7 @@ def login():
 
     return render_template("login.html", title="Entar - TeleEspecialista", form=form)
 
-
+# LOGEPA
 @app.route("/logout")
 def logout():
     logout_user()
@@ -276,6 +276,12 @@ def agendar_agora():
 def my_schedule():
     return render_template("my_schedule.html", title="Minha agenda")
 
+@app.route("/call.html")
+def call():
+    """
+        Rota para inicar a chamada de video entre 2 usuarios
+    """
+    return render_template("call.html", title="Chamada")
 
 # @app.route("/register_specialist")
 # @login_required

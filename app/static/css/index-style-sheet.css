@@ -1,5 +1,5 @@
 body{
-    background-image: url("img/homebkg.jpeg") !important;
+    background-image: url("../img/homebkg.jpeg") !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
     background-size: cover !important;
