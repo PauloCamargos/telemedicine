@@ -63,13 +63,14 @@ class LoginForm(FlaskForm):
     remember_me = BooleanField('Salvar informações')
     submit = SubmitField('Entrar')
 
-class NovaConsultaForm(FlaskForm):
-    dt = DateField('DatePicker', format='%Y-%m-%d')
-
 class SearchSpecialistForm(FlaskForm):
     select_specialities = SelectField('Especialidade', choices=[], id="select_specialities")
     search_submit = SubmitField('Pesquisar')
     users_found = []
+    nome_paciente = StringField('Nome do Paciente', validators=[DataRequired()])
+    data_agendamento = DateField('Data de agendamento', format='%d/%m/%Y', validators=[DataRequired()])
+    submit_nova_consulta = SubmitField("Solicitar")
+    user_id = IntegerField("User ID")
 
     def populate_select_specialities(self):
         choices = [(0,'Todas as especialidades')]

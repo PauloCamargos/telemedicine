@@ -95,7 +95,36 @@ def search_specialist():
     form.populate_select_specialities()
     form.populate_menuzinhos(0)
     if request.method == 'POST':
-        form.populate_menuzinhos(form.select_specialities.data)
+        print("#"*100)
+        print("POST")
+        print(request.form)
+        if 'submit_nova_consulta' in request.form or 'nome_paciente' in request.form:
+            print("nova")
+            print(form.user_id.data)
+            print(form.nome_paciente.data)
+            print(form.data_agendamento.data)
+            # TODO: FIX IT
+            # BUG: olha o bug isso
+            if True:#form.validate_on_submit():
+                consulta = Consulta(nome_paciente=form.nome_paciente.data,
+                data_agendada=form.data_agendamento.data)
+                user_request = User.query.filter_by(id=form.user_id.data)[0]
+                current_user.consultas.append(consulta)
+                user_request.consultas.append(consulta)
+                db.session.commit()
+                print("ok")
+                return  redirect(url_for("home"))
+            else:
+                print("nao ok")
+                pass
+
+        elif 'search_submit' in request.form:
+            print("search")
+            form.populate_menuzinhos(form.select_specialities.data)
+        else:
+            print("else, deu ruim")
+            pass
+        print("#"*100)
 
     return render_template("search_specialist.html",
     title="Buscar - TeleEspecialista",
