@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, flash, request
 from app import app, db, bcrypt
 from app.forms import SearchSpecialistForm, DoctorRegistrationForm, LoginForm, UpdateAccountForm, CalendarForm
-from app.models import User, Specialty, Calendar
+from app.models import User, Specialty, Calendar, Consulta
 from app.constants import *
 from flask_login import login_user, current_user, logout_user, login_required
 from wtforms import SubmitField
@@ -230,7 +230,13 @@ def nova_consulta():
 @app.route("/agendar_agora")
 @login_required
 def agendar_agora():
-    return render_template("my_calls.html", title="Meus chamados")
+    consulta = Consulta(nome_paciente="Não informado")
+    user_id = request.args['user_id']  # counterpart for url_for(
+    user_request = User.query.filter_by(id=user_id)[0]
+    current_user.consultas.append(consulta)
+    user_request.consultas.append(consulta)
+    db.session.commit()
+    return redirect(url_for('home'))
 
 
 @app.route("/my_schedule")
