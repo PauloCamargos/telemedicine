@@ -283,6 +283,8 @@ def call():
         O template 'call.html' contém os códigos em JavaScript da biblioteca
         WebRTC para funcionamento da chamada de vídeo.
     """
+    # https://codelabs.developers.google.com/codelabs/webrtc-web/#7
+    
     return render_template("call.html", title="Chamada", status="iniciar")
 
 
