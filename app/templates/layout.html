@@ -36,7 +36,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ url_for("account") }}">Minha conta</a></li>
+                    <li><a href="{{ url_for("account") }}">{{current_user.fullname.split()[0]}}</a></li>
                     <li><a href="{{ url_for("logout") }}">Sair</a></li>
                 </ul>
                 <form class="navbar-form navbar-right">

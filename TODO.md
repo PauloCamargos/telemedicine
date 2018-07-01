@@ -7,7 +7,7 @@ status
 1. Solicitações antigas aparecem no histórico
 1. Exibir, alterar e adicionar escala (agenda) dos especialistas
 1. Possibilidade de exclusãod e colaboradores
-1. Exibir o nome do usuário logado no lugar de 'Minha conta'
+1. <s> Exibir o nome do usuário logado no lugar de 'Minha conta' </s>
 1. Consertar erros de links
 1. Em 'Colaboradores', colocar a especialidade ao lado do nome
 1. Implementar agendar consulta
