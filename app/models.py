@@ -69,8 +69,7 @@ class User(db.Model, UserMixin):
     backref=db.backref('doctor', lazy='dynamic'))
 
     def __repr__(self):
-        return f"User('{self.id}','{self.email}','{self.fullname}',\
-        '{self.specialties}', '{self.password}')"
+        return "User('{self.id}','{self.email}','{self.fullname}','{self.specialties}', '{self.password}')"
 
 
 class Specialty(db.Model):
@@ -80,7 +79,7 @@ class Specialty(db.Model):
     # Foreign keys
     service_days = db.relationship('Calendar', backref='specialty')
     def __repr__(self):
-        return f"Specialty('{self.id}','{self.specialty}')"
+        return "Specialty('{self.id}','{self.specialty}')"
 
 
 class Calendar(db.Model):
@@ -110,7 +109,7 @@ class Consulta(db.Model):
         return self.doctors.filter(User.id!=user_eu.id)[0]
 
 #    def __repr__(self):
-#        return f"Conulta('{self.id}','{self.doctos}','{self.nome_paciente}')"
+#        return "Conulta('{self.id}','{self.doctos}','{self.nome_paciente}')"
 
 ##########################################
 # class Appointment(db.Model):
@@ -131,4 +130,4 @@ class Consulta(db.Model):
 #     state_inscription = db.Column(db.String(32), unique=True)
 #
 #     def __repr__(self):
-#         return f"Specialty('{self.id}','{self.specialty}')"
+#         return "Specialty('{self.id}','{self.specialty}')"

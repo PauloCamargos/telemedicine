@@ -176,7 +176,7 @@ def register():
         specialty.doctors.append(doctor)
         db.session.commit()
 
-        flash(f'Registro efetuado para {doctor.fullname}!', category='success')
+        flash('Registro efetuado para {doctor.fullname}!', category='success')
         return redirect(url_for("register.html"))
     elif request.method == 'GET':
         paulo = User(email='paulo.camargos@hotmail.com', password='paulosilva',
@@ -211,7 +211,7 @@ def login():
             # redireciona para a url digitada apos logar
             next_page= request.args.get('next')
             return redirect(next_page) if next_page else redirect(url_for('home'))
-            # flash(f'Sucesso no login para o usuário {form.email.data}!', category='success')
+            # flash('Sucesso no login para o usuário {form.email.data}!', category='success')
         else:
             flash('Usuário e/ou senha incorretos! Tente novamente.', category='danger')
 
