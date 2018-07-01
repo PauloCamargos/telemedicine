@@ -276,14 +276,24 @@ def agendar_agora():
 def my_schedule():
     return render_template("my_schedule.html", title="Minha agenda")
 
-@app.route("/call.html")
+@app.route("/call")
 def call():
     """
-        Rota para inicar a chamada de video entre 2 usuarios
+        Rota para inicar a chamada de video entre 2 usuários.
+        O template 'call.html' contém os códigos em JavaScript da biblioteca
+        WebRTC para funcionamento da chamada de vídeo.
     """
-    return render_template("call.html", title="Chamada")
+    return render_template("call.html", title="Chamada", status="iniciar")
 
-# @app.route("/register_specialist")
-# @login_required
-# def register_specialist():
-#     return render_template("register_specialist.html", title="Cadastrar especialista")
+
+@app.route("/end_call")
+def end_call():
+    """
+        Rota para finalizar uma chamada de vídeo
+    """
+    return render_template("call.html", status="finalizar")
+
+@app.route("/register_specialist")
+@login_required
+def register_specialist():
+    return render_template("register_specialist.html", title="Cadastrar especialista")
