@@ -47,32 +47,7 @@
 }
 
 </style>
-<script>
-function showDialog(user_id, user_name, data_hoje){
-   var whitebg = document.getElementById("white-background");
-   var dlg = document.getElementById("dlgbox");
-   var header = document.getElementById('dlg-header');
-   var user_id_form = document.getElementById('user_id');
-   user_id_form.value = user_id;
-   header.innerHTML = "Solicitar Consulta com " + user_name;
 
-   whitebg.style.display = "block";
-   dlg.style.display = "block";
-
-   var winWidth = window.innerWidth;
-   var winHeight = window.innerHeight;
-
-   dlg.style.left = (winWidth/2) - 480/2 + "px";
-   dlg.style.top = "150px";
-}
-
-function dlgCancel(){
-   var whitebg = document.getElementById("white-background");
-   var dlg = document.getElementById("dlgbox");
-   whitebg.style.display = "none";
-   dlg.style.display = "none";
-}
-</script>
 <!-- Dialog solicitar consulta -->
 <div id="white-background">
 </div>
@@ -184,4 +159,31 @@ function dlgCancel(){
         </div>
     </div>
 </div>
+
+<script>
+function showDialog(user_id, user_name, data_hoje){
+   var whitebg = document.getElementById("white-background");
+   var dlg = document.getElementById("dlgbox");
+   var header = document.getElementById('dlg-header');
+   var user_id_form = document.getElementById('user_id');
+   user_id_form.value = user_id;
+   header.innerHTML = "Solicitar Consulta com " + user_name;
+
+   whitebg.style.display = "block";
+   dlg.style.display = "block";
+
+   var winWidth = window.innerWidth;
+   var winHeight = window.innerHeight;
+
+   dlg.style.left = (winWidth/2) - 480/2 + "px";
+   dlg.style.top = "150px";
+}
+
+function dlgCancel(){
+   var whitebg = document.getElementById("white-background");
+   var dlg = document.getElementById("dlgbox");
+   whitebg.style.display = "none";
+   dlg.style.display = "none";
+}
+</script>
 {% endblock %}
