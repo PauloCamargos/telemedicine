@@ -72,6 +72,8 @@ class SearchSpecialistForm(FlaskForm):
     submit_nova_consulta = SubmitField("Solicitar")
     user_id = IntegerField("User ID")
 
+    #TODO: def __init__(self, *args, **keywars):
+
     def populate_select_specialities(self):
         choices = [(0,'Todas as especialidades')]
         specialties = []

@@ -36,7 +36,18 @@
 
     - [Psycopg2](http://initd.org/psycopg/)
 
-        `$ pip install psycopg2-binary`
+      `$ pip install psycopg2-binary`
+
+    - [node.js](https://nodejs.org/en/)
+
+      `$ sudo apt-get update`
+      `$ sudo apt-get install nodejs`
+
+      Por fim, instale o gerenciador de pacotes `npm`
+
+    -[npm](https://www.npmjs.com/)
+
+      `sudo apt-get install npm`
 
 1. Start coding!
 

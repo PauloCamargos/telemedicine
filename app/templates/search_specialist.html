@@ -47,32 +47,7 @@
 }
 
 </style>
-<script>
-function showDialog(user_id, user_name, data_hoje){
-   var whitebg = document.getElementById("white-background");
-   var dlg = document.getElementById("dlgbox");
-   var header = document.getElementById('dlg-header');
-   var user_id_form = document.getElementById('user_id');
-   user_id_form.value = user_id;
-   header.innerHTML = "Solicitar Consulta com " + user_name;
 
-   whitebg.style.display = "block";
-   dlg.style.display = "block";
-
-   var winWidth = window.innerWidth;
-   var winHeight = window.innerHeight;
-
-   dlg.style.left = (winWidth/2) - 480/2 + "px";
-   dlg.style.top = "150px";
-}
-
-function dlgCancel(){
-   var whitebg = document.getElementById("white-background");
-   var dlg = document.getElementById("dlgbox");
-   whitebg.style.display = "none";
-   dlg.style.display = "none";
-}
-</script>
 <!-- Dialog solicitar consulta -->
 <div id="white-background">
 </div>
@@ -104,10 +79,26 @@ function dlgCancel(){
             {% endfor %}
         </div>
         {% else %}
-        {{ form.data_agendamento(class="form-control")}}
+        {{ form.data_agendamento(class="hidden form-control")}}
         {% endif %}
-
         </div>
+        <!-- datetimepicker -->
+        <div class="form-group">
+            <div class='input-group date' id='datetimepicker1'>
+                <input type='text' class="form-control" />
+                <span class="input-group-addon">
+
+             <i class="fa fa-calendar">
+             </i>
+                </span>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
+<!-- datetimepicker -->
     </div>
     <div id="dlg-footer">
         <div class="form-group">
@@ -184,4 +175,37 @@ function dlgCancel(){
         </div>
     </div>
 </div>
+<!-- Include jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+<script>
+function showDialog(user_id, user_name, data_hoje){
+   var whitebg = document.getElementById("white-background");
+   var dlg = document.getElementById("dlgbox");
+   var header = document.getElementById('dlg-header');
+   var user_id_form = document.getElementById('user_id');
+   user_id_form.value = user_id;
+   header.innerHTML = "Solicitar Consulta com " + user_name;
+
+   whitebg.style.display = "block";
+   dlg.style.display = "block";
+
+   var winWidth = window.innerWidth;
+   var winHeight = window.innerHeight;
+
+   dlg.style.left = (winWidth/2) - 480/2 + "px";
+   dlg.style.top = "150px";
+}
+
+function dlgCancel(){
+   var whitebg = document.getElementById("white-background");
+   var dlg = document.getElementById("dlgbox");
+   whitebg.style.display = "none";
+   dlg.style.display = "none";
+}
+</script>
 {% endblock %}
