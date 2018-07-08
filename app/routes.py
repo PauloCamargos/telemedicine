@@ -287,7 +287,7 @@ def call():
 
     # return render_template("call.html", title="Chamada", status="iniciar")
     # return render_template("One-to-One.html", title="Chamada", status="iniciar")
-    return redirect("http://localhost:9001/demos/")
+    return redirect("http://tele-especialista.sytes.net:9001/demos/")
 
 
 @app.route("/end_call")
