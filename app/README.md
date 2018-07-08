@@ -1,7 +1,7 @@
 ## Problemas conhecidos:
 
 1. Google Chrome funciona somente se instalarmos um certificado SSL
-1. O proxy da UFU não deixa acessarmos o link da chamada de vídeo
+1. O proxy da UFU não deixa acessar o link da chamada de vídeo
 1. Ainda é necessário remover os excessos (coisas que não usamos) na página da
 chamada de vídeo e integrá-la ao Website TeleEspecialista
 
