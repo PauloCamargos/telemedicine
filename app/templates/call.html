@@ -10,14 +10,14 @@
 
 <!--  CODIGO PARA TRANSMISSAO DE VIDEO -->
 <!-- {% if status=="iniciar" %} -->
-<!-- <video id="localVideo" autoplay playsinline></video>
+<video id="localVideo" autoplay playsinline></video>
 <video id="remoteVideo" autoplay playsinline></video>
 
 <div>
   <button id="startButton">Start</button>
   <button id="callButton">Call</button>
   <button id="hangupButton">Hang Up</button>
-</div> -->
+</div>
 
 
 <!-- <div class="row">
@@ -41,7 +41,7 @@
 <!-- CODIGO PARA TRANSMISSAO DE TEXTO -->
 
 <textarea id="dataChannelSend" disabled
-    placeholder="Press Start, enter some text, then press Send."></textarea>
+    placeholder="Digite sua mensagem aqui."></textarea>
   <textarea id="dataChannelReceive" disabled></textarea>
 
   <div id="buttons">
@@ -56,7 +56,7 @@
 <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 
 <!--Use o de baixo para video entre dois computadores -->
-<!-- <script src="{{ url_for("static", filename="js/webrtc_peer.js")}}"></script> -->
+<script src="{{ url_for("static", filename="js/webrtc_peer.js")}}"></script>
 
 <!-- Use o de baixo para um video local somente  -->
 <!-- <script src="{{ url_for("static", filename="js/webrtc.js")}}"></script> -->

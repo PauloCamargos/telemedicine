@@ -99,6 +99,14 @@ nathalia_rodrigues = User(email='nathalia@teleespecialista.com',
                        rg='00000015',
                        cpf='00000000015',
                        phone_1='990000015')
+pedro_carneiro = User(email='pedro@teleespecialista.com',
+                       password=hashed_password,
+                       image_file='pedro_carneiro.jpg',
+                       crm='16',
+                       fullname='Pedro Carneiro',
+                       rg='00000016',
+                       cpf='00000000016',
+                       phone_1='990000016')
 
 db.session.add(italo_fernandes)
 db.session.add(paulo_camargos)
@@ -106,6 +114,7 @@ db.session.add(ana_claudia)
 db.session.add(lucas_lemos)
 db.session.add(mariane_modesto)
 db.session.add(nathalia_rodrigues)
+db.session.add(pedro_carneiro)
 
 db.session.commit()
 
@@ -113,12 +122,15 @@ db.session.commit()
 radiologia = Specialty.query.filter_by(specialty='Radiologia e Diagnóstico por Imagem').first()
 otorrinolaringologia = Specialty.query.filter_by(specialty='Otorrinolaringologia').first()
 neurocirurgia = Specialty.query.filter_by(specialty='Neurocirurgia').first()
+mastologia = Specialty.query.filter_by(specialty='Mastologia').first()
 geral = Specialty.query.filter_by(specialty='Geral').first()
+
 
 radiologia.doctors.append(italo_fernandes)
 otorrinolaringologia.doctors.append(paulo_camargos)
 radiologia.doctors.append(ana_claudia)
 neurocirurgia.doctors.append(lucas_lemos)
+mastologia.doctors.append(pedro_carneiro)
 geral.doctors.append(mariane_modesto)
 geral.doctors.append(nathalia_rodrigues)
 db.session.commit()
