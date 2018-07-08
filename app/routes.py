@@ -284,8 +284,10 @@ def call():
         WebRTC para funcionamento da chamada de vídeo.
     """
     # https://codelabs.developers.google.com/codelabs/webrtc-web/#7
-    
-    return render_template("call.html", title="Chamada", status="iniciar")
+
+    # return render_template("call.html", title="Chamada", status="iniciar")
+    # return render_template("One-to-One.html", title="Chamada", status="iniciar")
+    return redirect("http://localhost:9001/demos/")
 
 
 @app.route("/end_call")
