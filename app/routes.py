@@ -335,7 +335,7 @@ def update_appointment_status():
 
 
 @app.route("/start_video_call")
-@login_required
+# @login_required
 def start_video_call():
     appointment_id = request.args.get('appointment_id')
     appointment = Consulta.query.filter_by(id=appointment_id)[0]
