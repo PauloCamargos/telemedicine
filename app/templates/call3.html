@@ -90,8 +90,12 @@
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
-                    <li><a href="{{ url_for("home") }}"> <i class="fa fa-home" style="color:black"></i>
-                        Voltar<span class="sr-only">(current)</span></a></li>
+                    <li>
+                        <button id="open-or-join-room" class='btn btn-primary btn-block'>Conectar</button>
+                    </li>
+                    <li><a href="{{ url_for("home") }}" class="btn btn-danger btn-block">
+                        Finalizar Chamada </a>
+                    </li>
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -106,10 +110,10 @@
 
         <section class="experiment">
             <div class="make-center">
-                <input type="text" id="room-id" value="abcdef" autocorrect=off autocapitalize=off size=50>
+                <input class="hidden" type="text" id="room-id" value="abcdef" autocorrect=off autocapitalize=off size=50>
                 <button id="open-room" class="hidden">Open Room</button>
                 <button id="join-room" class="hidden">Join Room</button>
-                <button id="open-or-join-room">Realizar chamada</button>
+
 
                 <div id="room-urls" style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>
             </div>
