@@ -6,10 +6,10 @@
 
 <section class="experiment">
     <div class="make-center">
-        <input type="text" id="room-id" value="abcdef" autocorrect=off autocapitalize=off size=20>
-        <button id="open-room">Open Room</button>
-        <button id="join-room">Join Room</button>
-        <button id="open-or-join-room">Auto Open Or Join Room</button>
+        <input class="hidden" type="text" id="room-id" value="abcdef" autocorrect=off autocapitalize=off size=20>
+        <button id="open-room">Iniciar chat</button>
+        <button id="join-room" class="hidden">Join Room</button>
+        <button id="open-or-join-room"  class="hidden">Auto Open Or Join Room</button>
 
         <div id="room-urls" style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>
     </div>
@@ -117,11 +117,10 @@
         var roomHashURL = '#' + roomid;
         var roomQueryStringURL = '?roomid=' + roomid;
 
-        var html = '<h2>Unique URL for your room:</h2><br>';
+        var html = '<h2>Link da conferência:</h2><br>';
 
-        html += 'Hash URL: <a href="' + roomHashURL + '" target="_blank">' + roomHashURL + '</a>';
-        html += '<br>';
-        html += 'QueryString URL: <a href="' + roomQueryStringURL + '" target="_blank">' + roomQueryStringURL + '</a>';
+        // html += '<br>';
+        html += '<a href="' + roomQueryStringURL + '" target="_blank">http://tele-especialista.sytes.net/call' + roomQueryStringURL + '</a>';
 
         var roomURLsDiv = document.getElementById('room-urls');
         roomURLsDiv.innerHTML = html;
