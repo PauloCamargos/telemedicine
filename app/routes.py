@@ -285,9 +285,9 @@ def call():
     """
     # https://codelabs.developers.google.com/codelabs/webrtc-web/#7
 
-    # return render_template("call.html", title="Chamada", status="iniciar")
-    # return render_template("One-to-One.html", title="Chamada", status="iniciar")
-    return redirect("http://tele-especialista.sytes.net:9001/demos/")
+    return render_template("call2.html", title="Chamada", status="iniciar")
+    # return render_template("call3.html", title="Chamada", status="iniciar")
+    # return redirect("http://tele-especialista.sytes.net:9001/demos/")
 
 
 @app.route("/end_call")

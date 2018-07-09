@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>TeleEspecialista</title>
+    {% endif %}
+
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='css/dashboard.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='css/mainLogged.css') }}" rel="stylesheet" type="text/css">
+
+    <style>
+        * {
+            word-wrap:break-word;
+        }
+        video {
+            object-fit: fill;
+            width: 30%;
+        }
+        button,
+        input,
+        select {
+            font-weight: normal;
+            padding: 2px 4px;
+            text-decoration: none;
+            display: inline-block;
+            text-shadow: none;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .make-center {
+            text-align: center;
+            padding: 5px 10px;
+        }
+
+        img, input, textarea {
+          max-width: 100%
+        }
+
+        @media all and (max-width: 500px) {
+            .fork-left, .fork-right, .github-stargazers {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ url_for('home') }}">TeleEspecialista (HC)</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ url_for("account") }}">Minha conta</a></li>
+                    <li><a href="{{ url_for("logout") }}">Sair</a></li>
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <input type="text" class="form-control" placeholder="Buscar...">
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li><a href="{{ url_for("home") }}"> <i class="fa fa-home" style="color:black"></i>
+                        Início<span class="sr-only">(current)</span></a></li>
+                    <li><a href="{{ url_for("my_schedule")}}"><i class="fa fa-calendar" style="color:black"></i>
+                        Minha agenda</a></li>
+                        <li><a href="{{ url_for("new_scale") }}"><i class="fa fa-search" style="color:black"></i>
+                        Cadastrar escala</a></li>
+                    <li><a href="{{ url_for("my_calls") }}"><i class="fa fa-clock" style="color:black"></i>
+                        Meus chamados</a></li>
+                    <li><a href="{{ url_for("register") }}"><i class="fa fa-user-plus" style="color:black"></i>
+                        Cadastrar especialista</a></li>
+                    <li><a href="{{ url_for("staff") }}"><i class="fa fa-user-plus" style="color:black"></i>
+                        Colaboradores</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+                {% with messages = get_flashed_messages(with_categories=True) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="text-center alert alert-{{ category }}">
+                                {{ message}}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                {% block content %}
+                {% endblock content %}
+            </div>
+        </div>
+    </div>
+    <script>
+        window.useThisGithubPath = 'muaz-khan/RTCMultiConnection';
+    </script>
+    <script src="https://cdn.webrtc-experiment.com/commits.js" async></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="https://getbootstrap.com/docs/3.3/dist/js/jquery.min.js"><\/script>')</script>
+    <script src="https://getbootstrap.com/docs/3.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://getbootstrap.com/docs/3.3/dist/js/holder.min.js"></script>
+</body>
+</html>
