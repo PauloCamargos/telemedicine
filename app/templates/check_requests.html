@@ -64,24 +64,26 @@
                       </button>
                       <ul class="dropdown-menu">
                         {% if consulta.status == "Aguardando" %}
-                          <li>
+                          <!-- <li>
                             <a href="{{ url_for('update_appointment_status', appointment_id=consulta.id, appointment_status='Confirmada') }}">Aceitar solicitação</a
-                          </li>
+                          </li> -->
                           <li>
-                            <a href="{{ url_for('update_appointment_status', appointment_id=consulta.id, appointment_status='Rejeitada') }}">Rejeitar solicitação</a>
+                            <a href="{{ url_for('delete_appointment', appointment_id=consulta.id) }}">Exclui solicitação</a
                           </li>
                         {% elif consulta.status == "Confirmada" %}
                         <li>
-                          <!-- <a href= {{ consulta.link_consulta }} >Iniciar chamada</a -->
+                          <!-- <a href="{{ url_for('start_video_call', appointment_id=consulta.id) }}" >Iniciar chamada</a -->
                           <a href="{{ url_for('call', appointment_id=consulta.id) }}" >Iniciar chamada</a>
-
                         </li>
                         <li>
-                          <a href="{{ url_for('update_appointment_status', appointment_id=consulta.id, appointment_status='Rejeitada') }}">Rejeitar solicitação</a>
+                          <a href="{{ url_for('delete_appointment', appointment_id=consulta.id) }}">Exclui solicitação</a
                         </li>
                         {% elif consulta.status == "Rejeitada" %}
                         <li>
                           <a href="{{ url_for('update_appointment_status', appointment_id=consulta.id, appointment_status='Confirmada') }}">Confirmar chamada</a
+                        </li>
+                        <li>
+                          <a href="{{ url_for('delete_appointment', appointment_id=consulta.id) }}">Exclui solicitação</a
                         </li>
                         {% endif %}
                       </ul>
