@@ -68,7 +68,7 @@ class SearchSpecialistForm(FlaskForm):
     search_submit = SubmitField('Pesquisar')
     users_found = []
     nome_paciente = StringField('Nome do Paciente', validators=[DataRequired()])
-    data_agendamento = DateField('Data de agendamento', format='%d/%m/%Y', validators=[DataRequired()])
+    data_agendamento = DateField('Data de agendamento (DD/MM/AA hh:mm)', format='%d/%m/%Y %H:%M', validators=[DataRequired()])
     submit_nova_consulta = SubmitField("Solicitar")
     user_id = IntegerField("User ID")
 

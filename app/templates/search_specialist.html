@@ -71,19 +71,19 @@
         </div>
         <div class="form-group">
         {{ form.data_agendamento.label(class="form-control-label") }}
-        {% if form.nome_paciente.errors %}
+        {% if form.data_agendamento.errors %}
         <div class="has-error">
-            {{ form.data_agendamento(class="form-contro has-error")}}
+            {{ form.data_agendamento(class="form-control has-error")}}
             {% for error in form.data_agendamento.errors %}
             <strong class="help-block">{{ error }}</strong>
             {% endfor %}
         </div>
         {% else %}
-        {{ form.data_agendamento(class="hidden form-control")}}
+        {{ form.data_agendamento(class="form-control form-control")}}
         {% endif %}
         </div>
         <!-- datetimepicker -->
-        <div class="form-group">
+        <!-- <div class="form-group">
             <div class='input-group date' id='datetimepicker1'>
                 <input type='text' class="form-control"/>
                 <span class="input-group-addon">
@@ -95,7 +95,7 @@
             $(function () {
                 $('#datetimepicker1').datetimepicker();
             });
-        </script>
+        </script> -->
 <!-- datetimepicker -->
     </div>
     <div id="dlg-footer">
@@ -155,7 +155,7 @@
                             <i class="fas fa-circle" style="color:gray;"></i>
                             Offline
                             {%endif%}
-                        </p> -->
+                        </p>
                         <p>{{ user.specialties[0].specialty }}</p>
                         <p>
                             {% if True %}
