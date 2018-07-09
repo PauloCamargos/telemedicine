@@ -339,12 +339,4 @@ def update_appointment_status():
 def start_video_call():
     appointment_id = request.args.get('appointment_id')
     appointment = Consulta.query.filter_by(id=appointment_id)[0]
-    # Gerando o link da consulta
-    # Link da consulta = nome_paciente+"_"+appointment_id
-    link_consulta = str(appointment.nome_paciente.replace(" ", "_").lower()) + "_" + str(appointment.id)
-    print("Link da consulta gerada: " + link_consulta)
-    # print(f"Iniciando consulta para {appointment.nome_paciente}(ID:{appointment_id})")
-    # return render_template("homeSpecialist.html", title="Início - TeleEspecialista")
-    appointment.link_consulta = link_consulta
-    db.session.commit()
-    return render_template("call2.html", title="Chamada", status="iniciar", room_id=link_consulta)
+    return render_template("call2.html", title="Chamada", status="iniciar", room_id=appointment.link_consulta)
