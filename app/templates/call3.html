@@ -12,7 +12,18 @@
 
     <link rel="stylesheet" href="https://cdn.webrtc-experiment.com/style.css">
 
-    <title>One-to-One Video Chat using RTCMultiConnection</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>TeleEspecialista</title>
+    {% endif %}
+
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='css/dashboard.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='css/mainLogged.css') }}" rel="stylesheet" type="text/css">
 
     <meta name="description" content="One-to-One Video Chat using RTCMultiConnection. Only one user can join a room." />
     <meta name="keywords" content="WebRTC,RTCMultiConnection,Demos,Experiments,Samples,Examples" />
@@ -57,31 +68,16 @@
 <body>
     <article>
 
-        <header style="text-align: center;">
-            <h1>One-to-One Video Chat using RTCMultiConnection</h1>
-            <p>
-                <a href="https://rtcmulticonnection.herokuapp.com/">HOME</a>
-                <span> &copy; </span>
-                <a href="http://www.MuazKhan.com/" target="_blank">Muaz Khan</a> .
-                <a href="http://twitter.com/WebRTCWeb" target="_blank" title="Twitter profile for WebRTC Experiments">@WebRTCWeb</a> .
-                <a href="https://github.com/muaz-khan?tab=repositories" target="_blank" title="Github Profile">Github</a> .
-                <a href="https://github.com/muaz-khan/RTCMultiConnection/issues?state=open" target="_blank">Latest issues</a> .
-                <a href="https://github.com/muaz-khan/RTCMultiConnection/commits/master" target="_blank">What's New?</a>
-            </p>
-        </header>
 
-        <div class="github-stargazers"></div>
 
-        <blockquote>
-            Only one user can join a room.
-        </blockquote>
+        <!-- <div class="github-stargazers"></div> -->
 
         <section class="experiment">
             <div class="make-center">
                 <input type="text" id="room-id" value="abcdef" autocorrect=off autocapitalize=off size=20>
-                <button id="open-room">Open Room</button>
-                <button id="join-room">Join Room</button>
-                <button id="open-or-join-room">Auto Open Or Join Room</button>
+                <button id="open-room" class="hidden">Open Room</button>
+                <button id="join-room" class="hidden">Join Room</button>
+                <button id="open-or-join-room">Realizar chamada</button>
 
                 <div id="room-urls" style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>
             </div>
@@ -189,11 +185,11 @@
                 var roomHashURL = '#' + roomid;
                 var roomQueryStringURL = '?roomid=' + roomid;
 
-                var html = '<h2>Unique URL for your room:</h2><br>';
+                var html = '<h2>Id da sala de conferência:</h2><br>';
 
-                html += 'Hash URL: <a href="' + roomHashURL + '" target="_blank">' + roomHashURL + '</a>';
+                // html += 'Hash URL: <a href="' + roomHashURL + '" target="_blank">' + roomHashURL + '</a>';
                 html += '<br>';
-                html += 'QueryString URL: <a href="' + roomQueryStringURL + '" target="_blank">' + roomQueryStringURL + '</a>';
+                html += 'URL: <a href="' + roomQueryStringURL + '" target="_blank">' + roomQueryStringURL + '</a>';
 
                 var roomURLsDiv = document.getElementById('room-urls');
                 roomURLsDiv.innerHTML = html;
