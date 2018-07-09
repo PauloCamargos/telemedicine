@@ -71,9 +71,25 @@
                         Editar <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="{{url_for("call")}}">Iniciar chamada</a></li>
-                        <li><a href="#">Editar solicitação</a></li>
-                        <li><a href="#">Cancelar solicitação</a></li>
+                      {% if consulta.status == "Aguardando" %}
+                        <li>
+                          <a href="{{ url_for('update_appointment_status', appointment_id=consulta.id, appointment_status='Confirmada') }}">Aceitar solicitação</a
+                        </li>
+                        <li>
+                          <a href="{{ url_for('update_appointment_status', appointment_id=consulta.id, appointment_status='Rejeitada') }}">Rejeitar solicitação</a>
+                        </li>
+                      {% elif consulta.status == "Confirmada" %}
+                      <li>
+                        <a href="{{ url_for('start_video_call', appointment_id=consulta.id) }}" >Iniciar chamada</a
+                      </li>
+                      <li>
+                        <a href="{{ url_for('update_appointment_status', appointment_id=consulta.id, appointment_status='Rejeitada') }}">Rejeitar solicitação</a>
+                      </li>
+                      {% elif consulta.status == "Rejeitada" %}
+                      <li>
+                        <a href="{{ url_for('update_appointment_status', appointment_id=consulta.id, appointment_status='Confirmada') }}">Confirmar chamada</a
+                      </li>
+                      {% endif %}
                     </ul>
                 </div>
             </div>
@@ -84,13 +100,13 @@
         {% endfor %}
     </div>
 </div>
-<div class="panel panel-default">
+<!-- <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">Histórico</h3>
     </div>
     <div class="panel-body">
         Vazio
     </div>
-</div>
+</div> -->
 
 {% endblock content %}

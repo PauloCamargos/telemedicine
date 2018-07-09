@@ -112,10 +112,10 @@ def search_specialist():
                 current_user.consultas.append(consulta)
                 user_request.consultas.append(consulta)
                 db.session.commit()
-                print("ok")
+                print("[OK] Consulta registrada no DB")
                 return  redirect(url_for("home"))
             else:
-                print("nao ok")
+                print("[ERRO] Consulta não registrada no BD")
                 pass
 
         elif 'search_submit' in request.form:
@@ -284,8 +284,11 @@ def call():
         WebRTC para funcionamento da chamada de vídeo.
     """
     # https://codelabs.developers.google.com/codelabs/webrtc-web/#7
-    
-    return render_template("call.html", title="Chamada", status="iniciar")
+
+    # O call2.html esta funcionando
+    return render_template("call2.html", title="Chamada", status="iniciar")
+    # return render_template("call3.html", title="Chamada", status="iniciar")
+    # return redirect("http://tele-especialista.sytes.net:9001/demos/")
 
 
 @app.route("/end_call")
@@ -299,3 +302,41 @@ def end_call():
 @login_required
 def register_specialist():
     return render_template("register_specialist.html", title="Cadastrar especialista")
+
+
+@app.route("/accept_appointment")
+@login_required
+def update_appointment_status():
+    """
+        Esta rota atualizad o status da consulta para 'Confimada'
+    """
+    appointment_id = request.args.get('appointment_id')
+    appointment_status = request.args.get('appointment_status')
+    appointment = Consulta.query.filter_by(id=appointment_id)[0]
+    # print(f"O status antigo da consulta é: {appointment.status}")
+    appointment.status = appointment_status
+    # print(f"O status atual da consulta é: {appointment.status}")
+    db.session.commit()
+    # print(f"O ID da consulta é: {appointment_id}")
+    if appointment_status == "Confirmada":
+        # Caso a consulta seja confirmada, gerar o link da consulta
+        # Link da consulta = nome_paciente+"_"+appointment_id
+        link_consulta = "http://tele-especialista.sytes.net/call2.html?roomid=" + str(appointment.nome_paciente.replace(" ", "_").lower()) + "_" + str(appointment.id)
+        print("Link da consulta gerada: " + link_consulta)
+        # print(f"Iniciando consulta para {appointment.nome_paciente}(ID:{appointment_id})")
+        # return render_template("homeSpecialist.html", title="Início - TeleEspecialista")
+        appointment.link_consulta = link_consulta
+        db.session.commit()
+
+    if current_user.specialties[0].specialty == 'Geral':
+        return render_template("home.html", title="Início - TeleEspecialista")
+    else:
+        return render_template("homeSpecialist.html", title="Início - TeleEspecialista")
+
+
+@app.route("/start_video_call")
+# @login_required
+def start_video_call():
+    appointment_id = request.args.get('appointment_id')
+    appointment = Consulta.query.filter_by(id=appointment_id)[0]
+    return render_template("call2.html", title="Chamada", status="iniciar", room_id=appointment.link_consulta)

@@ -5,8 +5,20 @@
 // In this codelab, you will be streaming video only: "video: true".
 // Audio will not be streamed because it is set to "audio: false" by default.
 const mediaStreamConstraints = {
-  video: true,
+  video: true
 };
+
+const hdConstraints = {
+  video: {
+    width: {
+      min: 480,
+      max: 480,
+    },
+    height: {
+      min: 320,
+      max: 320
+    }
+  }
 
 // Set up to exchange only video.
 const offerOptions = {
@@ -195,7 +207,7 @@ hangupButton.disabled = true;
 // Handles start button action: creates local MediaStream.
 function startAction() {
   startButton.disabled = true;
-  navigator.mediaDevices.getUserMedia(mediaStreamConstraints)
+  navigator.mediaDevices.getUserMedia(mediaStreamConstraints, hdConstraints)
     .then(gotLocalMediaStream).catch(handleLocalMediaStreamError);
   trace('Requesting local stream.');
 }

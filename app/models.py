@@ -104,6 +104,7 @@ class Consulta(db.Model):
     data_agendada = db.Column(db.DateTime, default=datetime.datetime.now)
     nome_paciente = db.Column(db.String(256))
     status = db.Column(db.String(256), default="Aguardando") # Aguardando, Confirmada, Cancelada
+    link_consulta = db.Column(db.String(256), default="Empty")
 
     def get_other_doctor(self, user_eu):
         return self.doctors.filter(User.id!=user_eu.id)[0]

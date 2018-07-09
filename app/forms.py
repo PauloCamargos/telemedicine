@@ -102,11 +102,11 @@ class UpdateAccountForm(FlaskForm):
     confirm_password = PasswordField('Confirme a senha', validators=[DataRequired(), Length(min=4, max=32), EqualTo('password')])
     email = StringField('Email', validators=[DataRequired(message='Email inválido'), Email()])
     cep = IntegerField('CEP', validators=[Optional()])
-    place = SelectField('Logradouro', choices=logradouro_dict.items())
+    place = SelectField('Logradouro', choices=list(logradouro_dict.items()))
     residence_address = StringField('Endereço residencial')
     neighborhood = StringField('Bairro')
     city = StringField('Cidade')
-    state = SelectField('Estado', choices=states_dict.items())
+    state = SelectField('Estado', choices=list(states_dict.items()))
     phone_1 = IntegerField('Telefone celular', validators=[DataRequired()])
     phone_2 = IntegerField('Telefone fixo', validators=[Optional()])
     # specialty = SelectField('Especialidade', validators=[DataRequired()], choices=specialties_dict.items())
@@ -128,8 +128,8 @@ for d in doctors:
 
 class CalendarForm(FlaskForm):
 
-    specialist = SelectField('Especialista', validators=[DataRequired()], choices=doctors_dict.items())
-    specialty = SelectField('Especialidade', validators=[DataRequired()], choices=specialties_dict.items())
+    specialist = SelectField('Especialista', validators=[DataRequired()], choices=list(doctors_dict.items()))
+    specialty = SelectField('Especialidade', validators=[DataRequired()], choices=list(specialties_dict.items()))
     shift_start = DateTimeField('Início do turno', validators=[DataRequired()], format="%d/%m/%Y %H:%M")
     shift_end = DateTimeField('Fim do turno', validators=[DataRequired()], format="%d/%m/%Y %H:%M")
     submit = SubmitField('Cadastrar escala')
