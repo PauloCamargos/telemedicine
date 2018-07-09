@@ -152,7 +152,8 @@
     if (localStorage.getItem(connection.socketMessageEvent)) {
         roomid = localStorage.getItem(connection.socketMessageEvent);
     } else {
-        roomid = connection.token();
+        // roomid = connection.token();
+        roomid = '{{ room_id }}';
     }
     document.getElementById('room-id').value = roomid;
     document.getElementById('room-id').onkeyup = function() {
