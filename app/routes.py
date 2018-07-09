@@ -323,7 +323,7 @@ def update_appointment_status():
     if appointment_status == "Confirmada":
         # Caso a consulta seja confirmada, gerar o link da consulta
         # Link da consulta = nome_paciente+"_"+appointment_id
-        link_consulta = "http://tele-especialista.sytes.net/call2.html?roomid=" + str(appointment.nome_paciente.replace(" ", "_").lower()) + "_" + str(appointment.id)
+        link_consulta = "http://tele-especialista.sytes.net/call2.html?roomid=" + str(appointment.nome_paciente.replace(" ", "1_").lower()) + "_" + str(appointment.id)
         print("Link da consulta gerada: " + link_consulta)
         # print(f"Iniciando consulta para {appointment.nome_paciente}(ID:{appointment_id})")
         # return render_template("homeSpecialist.html", title="Início - TeleEspecialista")
