@@ -288,7 +288,7 @@ def call():
     # https://codelabs.developers.google.com/codelabs/webrtc-web/#7
 
     # O call2.html esta funcionando
-    return render_template("call2.html", title="Chamada", status="iniciar")
+    return render_template("call3.html", title="Chamada", status="iniciar")
     # return render_template("call3.html", title="Chamada", status="iniciar")
     # return redirect("http://tele-especialista.sytes.net:9001/demos/")
 
