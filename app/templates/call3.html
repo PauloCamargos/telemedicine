@@ -110,7 +110,7 @@
 
         <section class="experiment">
             <div class="make-center">
-                <input type="text" id="room-id" value="abcdef" autocorrect=off autocapitalize=off size=20>
+                <input type="text" id="room-id" value="abcdef" autocorrect=off autocapitalize=off size=50>
                 <button id="open-room" class="hidden">Open Room</button>
                 <button id="join-room" class="hidden">Join Room</button>
                 <button id="open-or-join-room">Realizar chamada</button>
@@ -238,7 +238,7 @@
                 var roomURLsDiv = document.getElementById('room-urls');
                 roomURLsDiv.innerHTML = html;
 
-                roomURLsDiv.style.display = 'block';
+                roomURLsDiv.style.display = 'none';
             }
 
             (function() {
