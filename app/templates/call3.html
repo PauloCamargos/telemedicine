@@ -77,7 +77,7 @@
                 <input type="text" id="room-id" value="abcdef" autocorrect=off autocapitalize=off size=20>
                 <button id="open-room" class="hidden">Open Room</button>
                 <button id="join-room" class="hidden">Join Room</button>
-                <button id="open-or-join-room">Realizar chamada</button>
+                <button id="open-or-join-room" class="hidden">Realizar chamada</button>
 
                 <div id="room-urls" style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>
             </div>
@@ -111,7 +111,7 @@
                 connection.join(document.getElementById('room-id').value);
             };
 
-            document.getElementById('open-or-join-room').onclick = function() {
+          window.onload('open-or-join-room').onclick = function() {
                 disableInputButtons();
                 connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
                     if(!isRoomExists) {
@@ -119,6 +119,14 @@
                     }
                 });
             };
+            // document.getElementById('open-or-join-room').onclick = function() {
+            //     disableInputButtons();
+            //     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
+            //         if(!isRoomExists) {
+            //             showRoomURL(roomid);
+            //         }
+            //     });
+            // };
 
             // ......................................................
             // ..................RTCMultiConnection Code.............
@@ -213,9 +221,9 @@
             var roomid = '';
             if (localStorage.getItem(connection.socketMessageEvent)) {
                 // roomid = localStorage.getItem(connection.socketMessageEvent);
-                roomid = 'xablaus1';
+                roomid = '{{ room_id }}';
             } else {
-                roomid = 'xablaus2';
+                roomid = '{{ room_id }}';
             }
             document.getElementById('room-id').value = roomid;
             document.getElementById('room-id').onkeyup = function() {

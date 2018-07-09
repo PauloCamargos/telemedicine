@@ -88,14 +88,6 @@
                       <li>
                         <a href="{{ url_for('update_appointment_status', appointment_id=consulta.id, appointment_status='Rejeitada') }}">Rejeitar solicitação</a>
                       </li>
-                      {% elif consulta.status == "Pronto" %}
-                      <li>
-                        <!-- <a href="{{ url_for('start_video_call', appointment_id=consulta.id) }}" >Iniciar chamada</a -->
-                        <a href="{{ url_for('call') }}" >Iniciar Video</a>
-                      </li>
-                      <li>
-                        <a href="{{ url_for('update_appointment_status', appointment_id=consulta.id, appointment_status='Rejeitada') }}">Rejeitar solicitação</a>
-                      </li>
                       {% elif consulta.status == "Rejeitada" %}
                       <li>
                         <a href="{{ url_for('update_appointment_status', appointment_id=consulta.id, appointment_status='Confirmada') }}">Confirmar chamada</a
