@@ -287,16 +287,17 @@ def call():
     """
     # https://codelabs.developers.google.com/codelabs/webrtc-web/#7
 
-    if request.args.get('appointment_id') is not None:
-        appointment_id = request.args.get('appointment_id')
-        appointment = Consulta.query.filter_by(id=appointment_id)[0]
-        link_consulta = str(appointment.nome_paciente.replace(" ", "_").lower()) + "_" + str(appointment.id)
+    # if request.args.get('appointment_id') is not None:
+    appointment_id = request.args.get('appointment_id')
+    appointment = Consulta.query.filter_by(id=appointment_id)[0]
+    link_consulta = str(appointment.nome_paciente.replace(" ", "_").lower()) + "_" + str(appointment.id)
 
-        return render_template("call3.html", title="Chamada", status="iniciar", room_id=link_consulta)
-    else:
+    if request.args.get('roomid') is not None:
         room_id= str(request.args.get('roomid'))
         link_video = 'http://tele-especialista.sytes.net/call?roomid' + room_id
-        return redirect(link_video)
+        return render_template("call3.html", title="Chamada", status="iniciar", room_id=link_consulta)
+
+    return render_template("call3.html", title="Chamada", status="iniciar", room_id=link_consulta)
     # return render_template("call3.html", title="Chamada", status="iniciar")
     # return redirect("http://tele-especialista.sytes.net:9001/demos/")
 
