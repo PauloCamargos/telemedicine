@@ -3,6 +3,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
+# from flask_mail import Mail
 
 app = Flask(__name__)
 # OVERIDE THIS KEY TO USE ON YOUR SERVER
@@ -10,7 +11,7 @@ app.config['SECRET_KEY'] = '846d33d018c947de7832c0993498b2a1'
 # CONFIGURANDO A LOCALIZAÇÃO DA DATABASE
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:banco@localhost/telespecialista'
-
+# mail = Mail(app)
 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
