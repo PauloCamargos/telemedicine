@@ -66,6 +66,48 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ url_for('home') }}">TeleEspecialista</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ url_for("account") }}">{{current_user.fullname.split()[0]}}</a></li>
+                    <li><a href="{{ url_for("logout") }}">Sair</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li><a href="{{ url_for("home") }}"> <i class="fa fa-home" style="color:black"></i>
+                        Início<span class="sr-only">(current)</span></a></li>
+                    <li><a href="{{ url_for("search_specialist") }}"><i class="fa fa-search" style="color:black"></i>
+                        Buscar especialista</a></li>
+                    <!-- <li><a href="{{ url_for("show_schedule")}}"><i class="fa fa-calendar" style="color:black"></i>
+                        Consultar agenda</a></li> -->
+                    <li><a href="{{ url_for("check_requests") }}"><i class="fa fa-clock" style="color:black"></i>
+                        Minhas solicitações</a></li>
+                    <li><a href="{{ url_for("register") }}"><i class="fa fa-user-plus" style="color:black"></i>
+                        Cadastrar colaborador</a></li>
+                    <li><a href="{{ url_for("staff") }}"><i class="fa fa-user-plus" style="color:black"></i>
+                        Colaboradores</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+
     <article>
 
 
@@ -286,8 +328,13 @@
         <script src="https://cdn.webrtc-experiment.com/commits.js" async></script>
 
     </article>
-
-
+</div>
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="https://getbootstrap.com/docs/3.3/dist/js/jquery.min.js"><\/script>')</script>
+<script src="https://getbootstrap.com/docs/3.3/dist/js/bootstrap.min.js"></script>
+<script src="https://getbootstrap.com/docs/3.3/dist/js/holder.min.js"></script>
 </body>
 
 </html>
