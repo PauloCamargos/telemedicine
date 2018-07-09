@@ -71,7 +71,9 @@
                         Editar <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
+                      {% if consulta.status == "Confirmada" %}
                         <li><a href="{{url_for("call")}}">Iniciar chamada</a></li>
+                      {% endif %}
                         <li><a href="#">Editar solicitação</a></li>
                         <li><a href="#">Cancelar solicitação</a></li>
                     </ul>
