@@ -1,6 +1,8 @@
 {% extends "layout_specialist.html" %}
 {% block content %}
-<h1 class="page-header">Cadastar colaborador</h1>
+<h1 class="page-header">Meus chamados</h1>
+
+
 
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -8,36 +10,43 @@
     </div>
     <div class="panel-body">
         <!--            INÍCIO DO CHAMADO -->
+        {% for consulta in current_user.consultas[::-1] %}
         <div class="row">
             <div class="col-md-1 text-center">
                 <h6>Status</h6>
+                {% if consulta.status == "Aguardando" %}
+                <i class="fas fa-circle" style="color:yellow;"></i>
+                {% elif consulta.status == "Confirmada" %}
                 <i class="fas fa-circle" style="color:lightgreen;"></i>
+                {% else %}
+                <i class="fas fa-circle" style="color:red;"></i>
+                {%endif%}
             </div>
-
             <div class="col-md-2 text-center">
                 <h6>Data</h6>
-                Agend.: 10/08/2018
-                Solic.: 10/08/2018
+                Agend.: {{ consulta.data_agendada.strftime('%d/%m/%Y') }}
+                Solic.: {{ consulta.data_solicitacao.strftime('%d/%m%Y') }}
             </div>
 
             <div class="col-md-1 text-center">
                 <h6>Horário</h6>
-                <p>20h50</p>
-            </div>
-
-            <div class="col-md-2 text-center">
-                <h6>Especialidade</h6>
-                <p>Nefrologia</p>
+                <p>{{ consulta.data_agendada.strftime('%H:%M') }}</p>
             </div>
 
             <div class="col-md-2 text-center">
                 <h6>Paciente</h6>
-                <p>Virgulino Pereira dos Santos</p>
+                <p>{{ consulta.nome_paciente }}</p>
+            </div>
+
+
+            <div class="col-md-2 text-center">
+                <h6>Especialista</h6>
+                <p>{{consulta.get_other_doctor(current_user).fullname}}</p>
             </div>
 
             <div class="col-md-2 text-center">
-                <h6>Solicitante</h6>
-                <p>Gen. Ítalo Fernandes</p>
+                <h6>Especialidade</h6>
+                <p>{{consulta.get_other_doctor(current_user).specialties[0].specialty}}</p>
             </div>
 
             <div class="col-md-2">
@@ -46,8 +55,25 @@
                         Editar <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Iniciar chamada</a></li>
-                        <li><a href="#">Rejeitar solicitação</a></li>
+                      {% if consulta.status == "Aguardando" %}
+                        <li>
+                          <a href="{{ url_for('update_appointment_status', appointment_id=consulta.id, appointment_status='Confirmada') }}">Aceitar solicitação</a
+                        </li>
+                        <li>
+                          <a href="{{ url_for('update_appointment_status', appointment_id=consulta.id, appointment_status='Rejeitada') }}">Rejeitar solicitação</a>
+                        </li>
+                      {% elif consulta.status == "Confirmada" %}
+                      <li>
+                        <a href= {{ consulta.link_consulta }} >Iniciar chamada</a
+                      </li>
+                      <li>
+                        <a href="{{ url_for('update_appointment_status', appointment_id=consulta.id, appointment_status='Rejeitada') }}">Rejeitar solicitação</a>
+                      </li>
+                      {% elif consulta.status == "Rejeitada" %}
+                      <li>
+                        <a href="{{ url_for('update_appointment_status', appointment_id=consulta.id, appointment_status='Confirmada') }}">Confirmar chamada</a
+                      </li>
+                      {% endif %}
                     </ul>
                 </div>
             </div>
@@ -55,57 +81,18 @@
         </div>
         <br><hr>
         <!--            FIM SOLICITACAO-->
-
-        <!--            INCIO SOLICITAÇÃO-->
-        <div class="row">
-            <div class="col-md-1 text-center">
-                <h6>Status</h6>
-                <i class="fas fa-circle" style="color:red;"></i>
-            </div>
-
-            <div class="col-md-2 text-center">
-                <h6>Data</h6>
-                Agend.: 10/08/2018
-                Solic.: 10/08/2018
-            </div>
-
-            <div class="col-md-1 text-center">
-                <h6>Horário</h6>
-                <p>20h50</p>
-            </div>
-
-            <div class="col-md-2 text-center">
-                <h6>Especialidade</h6>
-                <p>Nefrologia</p>
-            </div>
-
-            <div class="col-md-2 text-center">
-                <h6>Paciente</h6>
-                <p>Virgulino Pereira dos Santos</p>
-            </div>
-
-            <div class="col-md-2 text-center">
-                <h6>Solicitante</h6>
-                <p>Gen. Ítalo Fernandes</p>
-            </div>
-
-            <div class="col-md-2">
-                <div class="btn-group btn-block">
-                    <button type="button" class="btn btn-primary dropdown-toggle btn-block" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Editar <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Iniciar chamada</a></li>
-                        <li><a href="#">Rejeitar solicitação</a></li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
+        {% endfor %}
         <br><hr>
         <!--            FIM SOLICITACAO-->
     </div>
 </div>
-
+<!-- <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Histórico de chamados</h3>
+    </div>
+    <div class="panel-body">
+        Vazio
+    </div>
+</div> -->
 
 {% endblock content %}

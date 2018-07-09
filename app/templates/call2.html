@@ -6,8 +6,8 @@
 
 <section class="experiment">
     <div class="make-center">
-        <input class="" type="text" id="room-id" value="abcdef" autocorrect=off autocapitalize=off size=20>
-        <button id="open-room">Iniciar chat</button>
+        <input class="" type="text" id="room-id" value="{{ room_id }}" autocorrect=off autocapitalize=off size=40>
+        <button id="open-room" class="hidden">Iniciar chat</button>
         <button id="join-room" class="hidden">Join Room</button>
         <button id="open-or-join-room"  class="hidden">Auto Open Or Join Room</button>
 
@@ -31,12 +31,19 @@
     // .......................UI Code........................
     // ......................................................
 
-    document.getElementById('open-room').onclick = function() {
+
+    window.onload = function() { // Ao carregar a janela
         disableInputButtons();
         connection.open(document.getElementById('room-id').value, function() {
             showRoomURL(connection.sessionid);
         });
     };
+    // document.getElementById('open-room').onclick = function() {
+    //     disableInputButtons();
+    //     connection.open(document.getElementById('room-id').value, function() {
+    //         showRoomURL(connection.sessionid);
+    //     });
+    // };
 
     document.getElementById('join-room').onclick = function() {
         disableInputButtons();
@@ -141,7 +148,7 @@
         window.params = params;
     })();
 
-    var roomid = '';
+    var roomid = '{{ room_id }}';
     if (localStorage.getItem(connection.socketMessageEvent)) {
         roomid = localStorage.getItem(connection.socketMessageEvent);
     } else {
