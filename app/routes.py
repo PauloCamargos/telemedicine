@@ -294,8 +294,8 @@ def call():
 
         return render_template("call3.html", title="Chamada", status="iniciar", room_id=link_consulta)
     else:
-        room_id= request.args.get('roomid')
-        link_video = 'http://tele-especialista.sytes.net/call?' + room_id
+        room_id= str(request.args.get('roomid'))
+        link_video = 'http://tele-especialista.sytes.net/call?roomid' + room_id
         return redirect(link_video)
     # return render_template("call3.html", title="Chamada", status="iniciar")
     # return redirect("http://tele-especialista.sytes.net:9001/demos/")
