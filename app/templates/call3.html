@@ -216,9 +216,10 @@
 
             var roomid = '';
             if (localStorage.getItem(connection.socketMessageEvent)) {
-                roomid = localStorage.getItem(connection.socketMessageEvent);
+                // roomid = localStorage.getItem(connection.socketMessageEvent);
+                roomid = 'xablaus1';
             } else {
-                roomid = connection.token();
+                roomid = 'xablaus2';
             }
             document.getElementById('room-id').value = roomid;
             document.getElementById('room-id').onkeyup = function() {
