@@ -85,11 +85,9 @@
         <!-- datetimepicker -->
         <div class="form-group">
             <div class='input-group date' id='datetimepicker1'>
-                <input type='text' class="form-control" />
+                <input type='text' class="form-control"/>
                 <span class="input-group-addon">
-
-             <i class="fa fa-calendar">
-             </i>
+                    <i class="fa fa-calendar"></i>
                 </span>
             </div>
         </div>
@@ -150,7 +148,7 @@
                     <div class="caption">
                         <h3>{{ user.fullname }}</h3>
                         <p>
-                            {% if True %}
+                            {% if False %}
                             <i class="fas fa-circle" style="color:lightgreen;"></i>
                             Online
                             {% else %}
@@ -175,12 +173,6 @@
         </div>
     </div>
 </div>
-<!-- Include jQuery -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-<!-- Include Date Range Picker -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
 <script>
 function showDialog(user_id, user_name, data_hoje){
