@@ -278,7 +278,7 @@ def agendar_agora():
 def my_schedule():
     return render_template("my_schedule.html", title="Minha agenda")
 
-@app.route("/call")
+@app.route("/call", methods=["POST", "GET"])
 def call():
     """
         Rota para inicar a chamada de video entre 2 usuários.
