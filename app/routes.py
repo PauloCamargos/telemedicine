@@ -76,7 +76,7 @@ def account():
         flash('Sua conta foi atualizada com sucesso!', category='success')
         return redirect(url_for('account'))
     elif request.method == 'GET':
-        print('Não valido')
+        # print('Não valido')
         form.email.data = current_user.email
         form.cep.data = current_user.cep
         form.place.data = current_user.place
@@ -117,7 +117,7 @@ def search_specialist():
                 print("[OK] Consulta registrada no DB")
                 return  redirect(url_for("home"))
             else:
-                print("[ERRO] Consulta não registrada no BD")
+                # print("[ERRO] Consulta não registrada no BD")
                 pass
 
         elif 'search_submit' in request.form:
@@ -264,7 +264,7 @@ def nova_consulta():
 @app.route("/agendar_agora")
 @login_required
 def agendar_agora():
-    consulta = Consulta(nome_paciente="Não informado")
+    consulta = Consulta(nome_paciente="Nao informado")
     user_id = request.args['user_id']  # counterpart for url_for(
     user_request = User.query.filter_by(id=user_id)[0]
     current_user.consultas.append(consulta)
@@ -345,6 +345,6 @@ def start_video_call():
     else:
         appointment_id = 2
         appointment = Consulta.query.filter_by(id=appointment_id)[0]
-        print("Não existe")
+        print("Nao existe")
 
     return render_template("call2.html", title="Chamada", status="iniciar", room_id=appointment.link_consulta)
