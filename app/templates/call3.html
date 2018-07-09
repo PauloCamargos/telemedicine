@@ -111,7 +111,7 @@
                 connection.join(document.getElementById('room-id').value);
             };
 
-          window.onload('open-or-join-room').onclick = function() {
+          window.onload = function() {
                 disableInputButtons();
                 connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
                     if(!isRoomExists) {
