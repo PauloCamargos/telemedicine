@@ -337,6 +337,12 @@ def update_appointment_status():
 @app.route("/start_video_call")
 # @login_required
 def start_video_call():
-    appointment_id = request.args.get('appointment_id')
-    appointment = Consulta.query.filter_by(id=appointment_id)[0]
+    if request.args.get('appointment_id') is not None:
+        appointment_id = request.args.get('appointment_id')
+        appointment = Consulta.query.filter_by(id=appointment_id)[0]
+    else:
+        appointment_id = 2
+        appointment = Consulta.query.filter_by(id=appointment_id)[0]
+        print("Não existe")
+
     return render_template("call2.html", title="Chamada", status="iniciar", room_id=appointment.link_consulta)
