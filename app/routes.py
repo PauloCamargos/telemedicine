@@ -279,6 +279,7 @@ def my_schedule():
     return render_template("my_schedule.html", title="Minha agenda")
 
 @app.route("/call", methods=["POST", "GET"])
+@login_required
 def call():
     """
         Rota para inicar a chamada de video entre 2 usuários.
@@ -346,7 +347,7 @@ def update_appointment_status():
 
 
 @app.route("/start_video_call")
-# @login_required
+@login_required
 def start_video_call():
     if request.args.get('appointment_id') is not None:
         appointment_id = request.args.get('appointment_id')
@@ -357,3 +358,16 @@ def start_video_call():
         print("Nao existe")
 
     return render_template("call2.html", title="Chamada", status="iniciar", room_id=appointment.link_consulta)
+
+@app.route("/delete_appointment", methods=["POST", "GET"])
+@login_required
+def delete_appointment():
+    appointment_id = request.args.get('appointment_id')
+    appointment = Consulta.query.filter_by(id=appointment_id)[0]
+    db.session.delete(appointment)
+    db.session.commit()
+
+    if current_user.specialties[0].specialty == 'Geral':
+        return render_template("home.html", title="Início - TeleEspecialista")
+    else:
+        return render_template("homeSpecialist.html", title="Início - TeleEspecialista")
