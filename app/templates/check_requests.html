@@ -72,7 +72,9 @@
                           </li>
                         {% elif consulta.status == "Confirmada" %}
                         <li>
-                          <a href= {{ consulta.link_consulta }} >Iniciar chamada</a
+                          <!-- <a href= {{ consulta.link_consulta }} >Iniciar chamada</a -->
+                          <a href="{{ url_for('call', appointment_id=consulta.id) }}" >Iniciar chamada</a>
+
                         </li>
                         <li>
                           <a href="{{ url_for('update_appointment_status', appointment_id=consulta.id, appointment_status='Rejeitada') }}">Rejeitar solicitação</a>
