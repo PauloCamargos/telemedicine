@@ -12,6 +12,53 @@ http://tele-especialista.sytes.net/
 	* Como instalar:
 	* Configurando:
 
+## Configurando o servidor WebRTC e seus arquivos dependentes
+###### Installation Guide
+
+> This page explains how to install RTCMultiConnection.
+
+* Youtube Video: [NPM install](https://www.youtube.com/watch?v=EtsiYEW_T8Y) or [Other Videos](https://www.youtube.com/watch?v=EtsiYEW_T8Y&list=PLPRQUXAnRydKdyun-vjKPMrySoow2N4tl)
+
+###### Fetch from Github
+
+> Github is strongly recommended. NPM or TAR are secondary options.
+
+```sh
+git clone https://github.com/muaz-khan/RTCMultiConnection.git ./
+npm install --production
+```
+
+Or download ZIP:
+
+```sh
+wget https://github.com/muaz-khan/RTCMultiConnection/archive/master.zip
+unzip master.zip
+```
+
+Then call `npm install --production`.
+
+Use `--production` to skip `grunt` dependencies. You don't need `grunt` until you modify library itself.
+
+###### Install using NPM or Bower
+
+
+```sh
+npm install rtcmulticonnection --production
+
+# or
+bower install rtcmulticonnection
+```
+
+###### Run `server.js`
+
+```sh
+node server.js
+```
+
+Now open `http://localhost:9001/`.
+
+
+
 ## Configurações comuns:
 
 * Adicionar tudo e **mandar** para o git: `./vai "mensagem do commit"`
