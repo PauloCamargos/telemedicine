@@ -41,3 +41,6 @@ trash/
 
 #todo
 TODO.txt
+
+# Database file
+app/site.db
